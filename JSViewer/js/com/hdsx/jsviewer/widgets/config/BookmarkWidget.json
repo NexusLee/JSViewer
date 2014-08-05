@@ -1,0 +1,8 @@
+{
+	"bookmark": {
+		"bookmarks": [
+			{ "name": "Contiguous US", "coords": [-122.2, 24.89, -70.59, 46.92]},
+			{ "name": "Louisville, KY", "coords": [-85.935, 38.07, -85.15, 38.325]}
+		]
+	}
+}

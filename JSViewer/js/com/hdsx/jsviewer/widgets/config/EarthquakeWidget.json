@@ -1,0 +1,22 @@
+/*
+////////////////////////////////////////////////////////////////////////////////
+//
+// Copyright (c) 2008 ESRI
+//
+// All rights reserved under the copyright laws of the United States.
+// You may freely redistribute and use this software, with or
+// without modification, provided you include the original copyright
+// and use restrictions.  See use restrictions in the file:
+// <install location>/FlexViewer/License.txt
+//
+////////////////////////////////////////////////////////////////////////////////
+*/
+{
+	xmlFeed:
+	{
+		source: "http://earthquake.usgs.gov/eqcenter/catalogs/7day-M2.5.xml",
+		geometryService: "http://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Geometry/GeometryServer",
+		refreshRate: 600, //seconds
+		zoomScale: 1500000
+	}
+}

@@ -1,0 +1,6 @@
+{
+	"serviceArea": {
+		"url": "http://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Network/ESRI_DriveTime_US/GPServer/CreateDriveTimePolygons",
+		"geometryService": "http://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Geometry/GeometryServer"
+	}
+}

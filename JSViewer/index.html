@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312"/>
+    <title>GIS</title>
+    <style type="text/css">
+        @import "http://localhost/arcgis_js_api3.9/js/dojo/dijit/themes/tundra/tundra.css";
+        @import "http://localhost/arcgis_js_api3.9/js/esri/css/esri.css";
+        @import "http://localhost/arcgis_js_api3.9/js/dojo/dojo/resources/dojo.css";
+        @import "js/com/hdsx/jsviewer/themes/darkangel/darkangel.css";
+        @import "js/com/hdsx/jsviewer/themes/darkangel/override.css";
+        @import "jsviewer.css";
+    </style>
+
+    <!-- bootstrap the ArcGIS Server Javascript API -->
+    <script type="text/javascript">
+        var path_location = location.pathname.replace(/\/[^/]+$/, '');
+        console.info("path_location::" + path_location);
+        dojoConfig = {
+            isAsync: false,
+            isDebug: true,
+            packages: [
+                {
+                    name: "com",
+                    location: path_location + "/js/com"
+                }
+            ],
+            location:"zh-cn"
+        };
+    </script>
+    <script type="text/javascript" src="http://localhost/arcgis_js_api3.9/init.js">
+    </script>
+    <script type="text/javascript">
+        require([
+                    "dojo/parser",
+                    "dojo/ready",
+                    "dojo/topic",
+                    "esri/map",
+                    "com/hdsx/jsviewer/WidgetContainer",
+                    "com/hdsx/jsviewer/Controller",
+                    "com/hdsx/jsviewer/ConfigManager",
+                    "com/hdsx/jsviewer/DataManager",
+                    "com/hdsx/jsviewer/MapManager",
+                    "com/hdsx/jsviewer/WidgetManager",
+                    "com/hdsx/jsviewer/util",
+                    "dojo/domReady!"
+                ],
+                function (parser, ready, topic, map,
+                          WidgetContainer, Controller, ConfigManager, DataManager, MapManager, WidgetManager,util) {
+                    ready(function () {
+                        parser.parse();
+                        esriConfig.defaults.io.proxyUrl = "proxy.php";
+                        if (util) {
+                            var screen = util.pageBox();
+                            topic.publish("mapResizeRequestEvent", [screen])
+                        }
+                    });
+                });
+        function onPageResizeHandler() {
+            // Comment out these lines, and the onresize on body
+            // if you don't want full-screen
+        }
+    </script>
+</head>
+<body class="tundra">
+<!-- Markup to create faceless Site Starter manager objects -->
+<div data-dojo-type="com/hdsx/jsviewer/ConfigManager"></div>
+<div data-dojo-type="com/hdsx/jsviewer/DataManager"></div>
+<div data-dojo-type="com/hdsx/jsviewer/MapManager"></div>
+<div data-dojo-type="com/hdsx/jsviewer/WidgetManager"></div>
+
+<div id="map">
+    <div data-dojo-type="com/hdsx/jsviewer/Controller"></div>
+    <div data-dojo-type="com/hdsx/jsviewer/WidgetContainer"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<div class="widgetContent">
+	<div class="widgetPanel" buttonIcon="assets/images/small_icons/i_draw.png" buttonText="${i18nStrings.panelTitle0}">
+		<table>
+			<tr>
+				<td colspan="2">
+					<table style="width:100%;">
+						<tr>
+							<td><div id="btnPoint" class="toolbutton" buttonIcon="assets/images/icons/i_draw_point.png" title="${i18nStrings.btnPoint}" dojoAttachEvent="onclick:onToolButtonClick"></div></td>
+							<td><div id="btnPolyline" class="toolbutton" buttonIcon="assets/images/icons/i_draw_line.png" title="${i18nStrings.btnPolyline}" dojoAttachEvent="onclick:onToolButtonClick"></div></td>
+							<td><div id="btnFreehandLine" class="toolbutton" buttonIcon="assets/images/icons/i_draw_freeline.png" title="${i18nStrings.btnFreehandLine}" dojoAttachEvent="onclick:onToolButtonClick"></div></td>
+							<td><div id="btnPolygon" class="toolbutton" buttonIcon="assets/images/icons/i_draw_poly.png" title="${i18nStrings.btnPolygon}" dojoAttachEvent="onclick:onToolButtonClick"></div></td>
+							<td><div id="btnFreehandPoly" class="toolbutton" buttonIcon="assets/images/icons/i_draw_freepoly.png" title="${i18nStrings.btnFreehandPoly}" dojoAttachEvent="onclick:onToolButtonClick"></div></td>
+							<td><div id="btnText" class="toolbutton" buttonIcon="assets/images/icons/i_draw_text.png" title="${i18nStrings.btnText}" dojoAttachEvent="onclick:onToolButtonClick"></div></td>
+							<td><div id="btnClear" class="toolbutton" buttonIcon="assets/images/icons/i_clear.png" title="${i18nStrings.btnClear}" dojoAttachEvent="onclick:onToolButtonClick"></div></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<th class="rowHeader">${i18nStrings.promptText}:</th>
+				<td><input type="text" name="textInput" data-dojo-type="dijit/form/TextBox"></td>
+			</tr>
+			<tr>
+				<th class="rowHeader">${i18nStrings.promptColor}:</th>
+				<td>
+					<button dojoType="dijit.form.DropDownButton" showLabel="true" name="colorDropDown">
+						<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+						<div name="colorPalette" dojoType="dijit.ColorPalette"></div>
+					</button>
+				</td>
+			</tr>
+			<tr>
+				<th class="rowHeader">${i18nStrings.promptSize}:</th>
+				<td><input name="sizeInput" dojoType="dijit.form.NumberSpinner" constraints="{min:1,max:48}" value="8"></input></td>
+			</tr>
+		</table>
+	</div>
+	<div class="widgetPanel" buttonIcon="assets/images/small_icons/i_measure.png" buttonText="${i18nStrings.panelTitle0}">
+		<table>
+			<tr>
+				<td>
+					<label>${i18nStrings.chkMeasure}</label>
+				</td>
+				<td>
+					<input name="chkMeasure" type="checkbox" dojoType="dijit.form.CheckBox" checked="false" title="${i18nStrings.chkMeasure}" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label>${i18nStrings.cboDistance}:</label>
+				</td>
+				<td>
+					<select name="cboDistance" title="${i18nStrings.cboDistance}" dojoType="dijit.form.FilteringSelect" style="width:150px;"></select>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label>${i18nStrings.cboArea}:</label>
+				</td>
+				<td>
+					<select name="cboArea" title="${i18nStrings.cboArea}" dojoType="dijit.form.FilteringSelect" style="width:150px;"></select>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>

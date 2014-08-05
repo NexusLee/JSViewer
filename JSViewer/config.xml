@@ -1,0 +1,50 @@
+<?xml version="1.0" ?>
+<configuration>
+	<userinterface>
+		<banner>visible</banner>
+		<title>江西GIS</title>
+		<subtitle>Powered by 江西省交通厅</subtitle>
+		<logo>assets/images/logo.png</logo>
+		<stylesheet></stylesheet>
+		<menus>
+			<menu id="menuMap" visible="true" icon="assets/images/icons/i_globe.png">Map</menu>
+			<menu id="menuNav" visible="true" icon="assets/images/icons/i_nav.png">Navigation</menu>
+			<menu id="menuWidgets" visible="true" icon="assets/images/icons/i_widget.png">Tools</menu>
+			<menu id="menuHelp" visible="true" icon="assets/images/icons/i_help.png">Help</menu>
+        </menus>
+	</userinterface>
+	<map initialExtent="93.81639237382156 32.61628418723667 120.29979336871257 39.30256961361975" fullExtent="73.44696044921875 3.408477306365967 135.08583068847656 53.557926177978516">
+		<basemaps menu="menuMap">
+			<mapservice label="Street Map" type="dynamic" visible="true" alpha="1" icon="assets/images/icons/i_highway.png">http://localhost:6080/arcgis/rest/services/OilGISTestService/MapServer</mapservice>
+            <!--<mapservice label="Street Map2" type="tiled" visible="false" alpha="1" icon="assets/images/icons/i_highway.png">http://localhost:6080/arcgis/rest/services/OilGISTestService/MapServer</mapservice>-->
+		</basemaps>
+		<!--<livemaps>-->
+			<!--<mapservice label="Louisville Landbase" type="dynamic" visible="false" alpha="0.4">http://localhost:6080/arcgis/rest/services/OilGISTestService/MapServer</mapservice>-->
+		<!--</livemaps>-->
+	</map>
+	<navtools>
+		<navtool label="放大" icon="assets/images/icons/i_zoomin.png" menu="menuNav">zoomin</navtool>
+		<navtool label="缩小" icon="assets/images/icons/i_zoomout.png" menu="menuNav">zoomout</navtool>
+		<navtool label="全图" icon="assets/images/icons/i_zoomfull.png" menu="menuNav">zoomfull</navtool>
+		<navtool label="漫游" icon="assets/images/icons/i_pan.png" menu="menuNav">pan</navtool>
+	</navtools>
+	<widgets>
+        <widget label="Live Maps" icon="assets/images/icons/i_folder.png" menu="menuMap">com/hdsx/jsviewer/widgets/LiveMapsWidget</widget>
+        <widget label="Overview Map23" icon="assets/images/icons/i_overview.png" menu="menuMap" config="widgets/config/OverviewWidget.json">com/hdsx/jsviewer/widgets/OverviewWidget</widget>
+		<widget label="Bookmarks" icon="assets/images/icons/i_bookmark.png" menu="menuMap" config="widgets/config/BookmarkWidget.json">com/hdsx/jsviewer/widgets/BookmarkWidget</widget>
+		<widget label="Earthquakes" icon="assets/images/icons/i_rss.png" menu="menuWidgets" config="widgets/config/EarthquakeWidget.json">com/hdsx/jsviewer/widgets/GeoRSSWidget</widget>
+		<widget label="Locate" icon="assets/images/icons/i_pushpin.png" menu="menuWidgets" config="widgets/config/LocateWidget.json">com/hdsx/jsviewer/widgets/LocateWidget</widget>
+		<widget label="Police Facilities" icon="assets/images/icons/i_policestation.png" menu="menuWidgets" config="widgets/config/LiveLayerWidget2.json">com/hdsx/jsviewer/widgets/LiveLayerWidget</widget>
+		<widget label="Traffic Cameras" icon="assets/images/icons/i_camera.png" menu="menuWidgets" config="widgets/config/TrafficCameraWidget.json">com/hdsx/jsviewer/widgets/LiveLayerWidget</widget>
+		<widget label="Search" icon="assets/images/icons/i_search.png" menu="menuWidgets" config="widgets/config/SearchWidget.json">com/hdsx/jsviewer/widgets/SearchWidget</widget>
+		<widget label="Draw" icon="assets/images/icons/i_draw.png" menu="menuWidgets" config="widgets/config/DrawWidget.json">com/hdsx/jsviewer/widgets/DrawWidget</widget>
+		<widget label="Service Areas" icon="assets/images/icons/i_servicearea.png" menu="menuWidgets" config="widgets/config/ServiceAreaWidget.json">com/hdsx/jsviewer/widgets/ServiceAreaWidget</widget>
+		<widget label="About" icon="assets/images/icons/i_about.png" menu="menuHelp" config="widgets/config/AboutWidget.xml">com/hdsx/jsviewer/widgets/AboutWidget</widget>
+	</widgets>
+	<links>
+		<link label="Help" icon="assets/images/icons/i_help.png" menu="menuHelp">help.html</link>
+		<link label="Home" icon="assets/images/icons/i_home.png" menu="menuHelp">http://www.esri.com</link>
+		<link label="Resources" icon="assets/images/icons/i_folder2.png" menu="menuHelp">http://resources.esri.com</link>
+	</links>
+	<proxytype>asp</proxytype> <!-- jsp|asp|php -->
+</configuration>

@@ -1,0 +1,12 @@
+<div class="infoPopupBody">
+	<div class="infoPopupLeader" data-dojo-attach-point="leaderNode"></div>
+	<div class="widgetBox" style="width:100%;overflow:visible;" data-dojo-attach-point="containerNode">
+		<div data-dojo-attach-point="titleNode" style="font-weight:bold;"></div>
+		<div data-dojo-attach-point="contentNode"></div>
+		<div data-dojo-attach-point="linkNode" class="linkIcon" data-dojo-attach-point="onclick:onFollowLink"></div>
+		<div class="widgetButton wbClose infoPopupButton" style="top:0px" data-dojo-attach-point="closeButton" data-dojo-attach-event="onclick:onClose"></div>
+		<!-- pinning removed for 1.0 
+		<div class="widgetButton wbPin infoPopupButton" style="top:20px" dojoAttachPoint="pinButton" dojoAttachEvent="onclick:onPin"></div>
+		-->
+	</div>
+</div>

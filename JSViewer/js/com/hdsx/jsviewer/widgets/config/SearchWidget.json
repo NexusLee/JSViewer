@@ -1,0 +1,30 @@
+{
+	"search": {
+		"layers": [
+			{
+				"name": "Parcels",
+				"url": "http://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Louisville/LOJIC_LandRecords_Louisville/MapServer/0",
+				"expression": "PARCELID = '[value]'",
+				"textSearchField": "PARCELID",
+				"textSearchSampleValue": "181001490000",
+				"graphicalSearch": true,
+				"fields": ["PARCELID"],
+				"titleField": "PARCELID",
+				"linkField": ""
+			},
+			{
+				"name": "Police Facilities",
+				"url": "http://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Louisville/LOJIC_PublicSafety_Louisville/MapServer/3",
+				"expression": "PD_NAME = '[value]'",
+				"textSearchField": "PD_NAME",
+				"textSearchSampleValue": "2ND DIVISION",
+				"graphicalSearch": true,
+				"fields": ["PD_NAME","ADDRESS"],
+				"titleField": "PD_NAME",
+				"linkField": "",
+				"zoomScale": 10000
+			}
+		],
+		"zoomScale": 10000
+	}
+}

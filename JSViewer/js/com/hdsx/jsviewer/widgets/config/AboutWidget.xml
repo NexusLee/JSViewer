@@ -1,0 +1,11 @@
+<configuration>
+	<about>
+		<title>Sample JavaScript Viewer</title>
+		<subtitle>Developed by the ESRI Sample Viewer Team</subtitle>
+		<version>Version 1.0</version>
+		<description>ESRI would like to extend special thanks to ESRI-Canada for their support in the development of this application.
+		</description>
+		<copyright>Copyright 2008 ESRI. All rights reserved</copyright>
+		<logo>assets/images/esrilogo.png</logo>
+	</about>
+</configuration>

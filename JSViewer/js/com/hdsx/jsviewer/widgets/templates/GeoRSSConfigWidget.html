@@ -1,0 +1,26 @@
+<div class="widgetContent" dojoAttachPoint="containerNode">
+	<div class="widgetPanel" buttonIcon="assets/images/small_icons/i_options.png" buttonText="${i18nStrings.panelTitle0}">
+		<table class="widgetTable">
+			
+			<tr>
+			    <th class="rowHeader">${i18nStrings.promptUrl}</th>
+				<td><input name="GeoRSSurl"  type="text" dojoType="dijit.form.TextBox" value=""/></td>
+			</tr>
+			<tr>
+			    <th>&nbsp;</th>
+			     <td>
+			        <button name="btnGeoRSSbutton" type="button" dojoType="dijit.form.Button">${i18nStrings.btnGet}</button>
+			        <button name="btnClearRSS" type="button" dojoType="dijit.form.Button">${i18nStrings.btnClear}</button>
+			    </td>
+			</tr>
+		</table>		
+	</div>
+	<div class="widgetPanel" buttonIcon="assets/images/small_icons/i_rss.png" buttonText="${i18nStrings.panelTitle1}">
+		<table>
+			<tr><td><img class="loader" src="" alt="spinner" /></td><td class="resultsMsg">${i18nStrings.msgReady}</td></tr>
+		</table>
+		<div name="results" dojoType="com.esri.solutions.jsviewer.ResultList">
+		</div>
+</div>
+
+

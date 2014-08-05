@@ -1,0 +1,48 @@
+<div class="widgetContent" dojoAttachPoint="containerNode">
+	<div class="widgetPanel" buttonIcon="assets/images/small_icons/i_mailbox.png" buttonText="${i18nStrings.panelTitle0}">
+		<table class="widgetTable">
+			<tbody dojoAttachPoint="geocodingInputTable">
+				<tr dojoAttachPoint="geocodingButtonRow">
+					<th>&nbsp;</th>
+					<td>
+						<button name="btnLocateAddress" type="button" dojoType="dijit.form.Button">${i18nStrings.btnLocate}</button>
+						<button name="btnClearAddress" type="button" dojoType="dijit.form.Button">${i18nStrings.btnClear}</button>
+					</td>
+				</tr>
+			</tbody>		
+		</table>		
+	</div>
+	<div class="widgetPanel" buttonIcon="assets/images/small_icons/i_pushpin.png" buttonText="${i18nStrings.panelTitle1}">
+		<table class="widgetTable">
+			<tr>
+				<th class="rowHeader">${i18nStrings.promptX}:</th>
+				<td><input name="longitude" type="text" dojoType="dijit.form.NumberTextBox" value="-85.757"/></td>
+			</tr>
+			<tr>
+				<th class="rowHeader">${i18nStrings.promptY}:</th>
+				<td><input name="latitude" type="text" dojoType="dijit.form.NumberTextBox" value="38.174"/></td>
+			</tr>
+			<tr>
+				<th class="rowHeader">${i18nStrings.promptSR}:</th>
+				<td><select name="projection" dojoType="dijit.form.FilteringSelect"/></td>
+			</tr>
+			<tr>
+				<th class="rowHeader">${i18nStrings.promptEx}:</th>
+				<td>-85.757, 38.174</td>
+			</tr>
+			<tr>
+				<th>&nbsp;</th>
+				<td>
+					<button name="btnLocateCoords" type="button" dojoType="dijit.form.Button">${i18nStrings.btnLocate}</button>
+					<button name="btnClearCoords" type="button" dojoType="dijit.form.Button">${i18nStrings.btnClear}</button>
+				</td>
+			</tr>			
+		</table>		
+	</div>
+	<div class="widgetPanel" buttonIcon="assets/images/small_icons/i_table.png" buttonText="${i18nStrings.panelTitle2}">
+		<table>
+			<tr><td><img class="loader" src="" alt="spinner" /></td><td class="resultsMsg"></td></tr>
+		</table>
+		<div name="results" dojoType="com.esri.solutions.jsviewer.ResultList"></div>
+	</div>
+</div>

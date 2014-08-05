@@ -1,0 +1,17 @@
+body {
+    background-image: url(images/gradient.jpg);
+    background-repeat: repeat-x;
+    background-color: #b4b4b4;
+}
+
+/* Sample CSS for positioning the map non-full-screen */
+/*#map {
+    position: absolute;
+    left: 10px;
+    top: 300px;
+    width: 1000px;
+    height: 550px;
+    border: 2 px solid white;
+    background-color: white;
+    opacity: 1;
+}*/

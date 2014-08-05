@@ -1,0 +1,6 @@
+{
+    "overview": {
+        "mapservice": "http://localhost:6080/arcgis/rest/services/OilGISTestService/MapServer",
+        "servicetype": "dynamic"
+    }
+}

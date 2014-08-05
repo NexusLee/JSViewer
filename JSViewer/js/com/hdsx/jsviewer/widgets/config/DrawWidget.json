@@ -1,0 +1,16 @@
+{
+	"draw": {
+		"geometryService": "http://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Geometry/GeometryServer",
+		
+		"color": [0,0,0],
+		"size": 10,
+		"font": "Arial",
+		"measureSize": 10,
+		
+		"labelRounding": {
+			"point": { "mode": "round", "digits": 2 },
+			"line": {"mode": "sigdigit", " digits": 4 },
+			"area": {"mode": "sigdigit", " digits": 6 }
+		}
+	}
+}

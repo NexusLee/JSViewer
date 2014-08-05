@@ -1,0 +1,11 @@
+{
+	"livelayer": {
+		"layer": "http://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Louisville/LOJIC_PublicSafety_Louisville/MapServer/2",
+		"query": "OBJECTID > 0",
+		"fields": ["DESCRIPTION","URL"],
+		"titleField": "DESCRIPTION",
+		"linkField": "URL",
+		"refreshRate": 600, //seconds
+		"zoomScale": 5000
+	}
+}

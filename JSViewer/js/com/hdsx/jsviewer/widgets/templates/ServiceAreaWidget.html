@@ -1,0 +1,28 @@
+<div class="widgetContent" dojoAttachPoint="containerNode">
+	<div class="widgetPanel">
+		<table width="100%">
+			<tr>
+				<td>${i18nStrings.msgServiceArea}:</td>
+				<td width="5%"><div class="toolbutton" style="width:20px;height:20px" buttonIcon="assets/images/widget/w_addstart.png" title="${i18nStrings.btnSubmit}" dojoAttachEvent="onclick:onSubmitClick"></div></td>
+				<td width="5%"><img class="loader" src="" alt="spinner" /></td>
+			</tr>
+			<tr>
+				<td>${i18nStrings.msgKnownLocations}:</td>
+				<td>
+					<button dojoType="dijit.form.DropDownButton" showLabel="false" name="locationDropDown">
+						<div name="knownLocations" dojoType="com.esri.solutions.jsviewer.ResultList"></div>
+					</button>
+				</td>
+				<td>&nbsp;</td>
+			</tr>
+		</table>
+		<table width="100%">
+			<tr>
+				<td>${i18nStrings.promptInterval}:</td>
+				<td><input name="driveTime1" dojoType="dijit.form.NumberSpinner" constraints="{min:1,max:5}" value="1" style="width:5em;"></input></td>
+				<td><input name="driveTime2" dojoType="dijit.form.NumberSpinner" constraints="{min:2,max:10}" value="3" style="width:5em;"></input></td>
+				<td><input name="driveTime3" dojoType="dijit.form.NumberSpinner" constraints="{min:3,max:15}" value="5" style="width:5em;"></input></td>
+			</tr>
+		</table>
+	</div>
+</div>
