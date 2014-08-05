@@ -1,5 +1,5 @@
 define([
-    "../../../../../../../DevelopAPI/arcgis_js_v38_api/arcgis_js_api/library/3.8/3.8/js/dojo/dojo/_base/declare",
+    "dojo/_base/declare",
     "dojo/on",
     "dojo/topic",
     "dojo/query",

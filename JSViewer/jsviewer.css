@@ -1,3 +1,9 @@
+/*@import url("http://localhost/arcgis_js_api3.9/js/dojo/dijit/themes/tundra/tundra.css");*/
+/*@import url("http://localhost/arcgis_js_api3.9/js/esri/css/esri.css");*/
+/*@import url("http://localhost/arcgis_js_api3.9/js/dojo/dojo/resources/dojo.css");*/
+/*@import "js/com/hdsx/jsviewer/themes/darkangel/darkangel.css";*/
+/*@import "js/com/hdsx/jsviewer/themes/darkangel/override.css";*/
+
 body {
     background-image: url(images/gradient.jpg);
     background-repeat: repeat-x;

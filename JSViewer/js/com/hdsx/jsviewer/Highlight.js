@@ -1,4 +1,4 @@
-define(["../../../../../../../DevelopAPI/arcgis_js_v38_api/arcgis_js_api/library/3.8/3.8/js/dojo/dojo/_base/declare",
+define(["dojo/_base/declare",
     "dojo/_base/lang",
     "dijit/_WidgetBase",
     "dijit/_TemplatedMixin",

@@ -1,4 +1,4 @@
-define(["../../../../../../../DevelopAPI/arcgis_js_v38_api/arcgis_js_api/library/3.8/3.8/js/dojo/dojo/query",
+define(["dojo/query",
         "dojo/_base/array",
         "dojo/string"],
     function (query, array, string) {
