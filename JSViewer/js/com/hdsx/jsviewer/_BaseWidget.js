@@ -42,7 +42,8 @@ define([
                 console.log("_BaseWidget postCreate " + this.title);
                 // Wire up the map
                 try {
-                    this.setMap(registry.byId(this.mapId));
+//                    var tt = registry.byId(this.mapId);
+//                    this.setMap(tt);
                 }
                 catch (err) {
                     console.error(err);
@@ -88,7 +89,7 @@ define([
 
                 // Interact with the WidgetFrame
                 var frame = this.getParent();
-                if (frame && frame.declaredClass === "com.esri.solutions.jsviewer.WidgetFrame") {
+                if (frame && frame.declaredClass === "com.hdsx.jsviewer.WidgetFrame") {
                     this.connects.push(aspect.after(this, "onShowPanel", frame.selectPanel));
                 }
 

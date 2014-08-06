@@ -14,7 +14,7 @@ define([
             this.connects = [];
         },
 
-        templatePath: dojo.moduleUrl("com.esri.solutions.jsviewer", "templates/InfoPopup.html"),
+        templatePath: dojo.moduleUrl("com.hdsx.jsviewer", "templates/InfoPopup.html"),
 
         map: null,
         visible: false,

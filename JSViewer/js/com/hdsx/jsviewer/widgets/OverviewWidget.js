@@ -3,29 +3,23 @@ define(["dojo/_base/declare",
         "dojo/_base/Color",
         "dojo/on",
         "dojo/topic",
-        "esri/symbols/SimpleFillSymbol",
-        "esri/symbols/SimpleLineSymbol",
         "dojo/dom-attr",
         "com/hdsx/jsviewer/_BaseWidget",
         "esri/dijit/OverviewMap",
+        "dojo/dom-construct",
         "dojo/text!./templates/OverviewWidget.html"],
-    function (declare, lang, Color, on,topic,
-              SimpleFillSymbol, SimpleLineSymbol, domAttr, _BaseWidget,OverviewMap, template) {
+    function (declare, lang, Color, on,topic, domAttr, _BaseWidget,OverviewMap,domConstruct, template) {
         return declare([_BaseWidget], {
-            mapService: "",
-            serviceType: "",
             overviewMap: null,
             extentSymbol: null,
-
             tool: null,
             templateString: template,
-
             postMixInProperties: function () {
                 try {
                     this.inherited(arguments);
                     if (this.configData) {
-                        this.mapService = this.configData.overview.mapservice;
-                        this.serviceType = this.configData.overview.servicetype;
+//                        this.mapService = this.configData.overview.mapservice;
+//                        this.serviceType = this.configData.overview.servicetype;
                     }
                 }
                 catch (err) {
@@ -37,9 +31,11 @@ define(["dojo/_base/declare",
                 this.inherited(arguments);
                 this.overviewMap  =  new OverviewMap({
                     map:this.map,
-                    visible: true,
-                    attachTo: "bottom-right"
-                });
+                    visible: true
+//                    attachTo: "bottom-right",
+//                    color:" #D84E13",
+//                    opacity: .40
+                },this.mapNode);
             },
 
             postCreate: function () {
@@ -49,10 +45,10 @@ define(["dojo/_base/declare",
             startup: function () {
                 this.inherited(arguments);
                 this.overviewMap.startup();
-                this.overviewMap.hide()
             },
 
             shutdown: function () {
+                this.overviewMap.hide();
                 this.inherited(arguments);
             }
         });

@@ -129,7 +129,7 @@ define(["dojo/query",
 //                out = 3 * Math.PI / 2;
 //            }
 //            if ((x === 0) && (y === 0)) {
-//                console.error("com.esri.solutions.jsviewer.util.atan2(0,0) undefined");
+//                console.error("com.hdsx.jsviewer.util.atan2(0,0) undefined");
 //                out = 0.0;
 //            }
 //            return out;
@@ -791,7 +791,7 @@ define(["dojo/query",
                     out = 3 * Math.PI / 2;
                 }
                 if ((x === 0) && (y === 0)) {
-                    console.error("com.esri.solutions.jsviewer.util.atan2(0,0) undefined");
+                    console.error("com.hdsx.jsviewer.util.atan2(0,0) undefined");
                     out = 0.0;
                 }
                 return out;

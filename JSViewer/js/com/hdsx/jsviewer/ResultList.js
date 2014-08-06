@@ -28,7 +28,7 @@ define([
             try {
                 if (obj) {
                     var item = null;
-                    if (obj.declaredClass === "com.esri.solutions.jsviewer.ResultItem") {
+                    if (obj.declaredClass === "com.hdsx.jsviewer.ResultItem") {
                         item = obj;
                     }
                     else {

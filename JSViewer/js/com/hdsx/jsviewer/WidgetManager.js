@@ -80,10 +80,14 @@ define([
         },
 
         getWidget: function (label) {
-            if (!this.widgets[label]) {
-                this.loadWidget(label);
+            try{
+                if (!this.widgets[label]) {
+                    this.loadWidget(label);
+                }
+                return this.widgets[label];
+            }catch(err){
+                console.error(err);
             }
-            return this.widgets[label];
         },
 
         requireWidget: function (label) {

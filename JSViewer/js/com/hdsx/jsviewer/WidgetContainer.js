@@ -53,6 +53,7 @@ define(["dojo/_base/declare",
             array.forEach(children, function (child) {
                 child.startup();
             });
+            console.info("在WidgetContainerstartup中subscribe   onClose");
             for (var i = 0; i < children.length; i++) {
                 topic.subscribe(children[i], "onResizeStart", lang.hitch(this,this.frameResizing));
                 topic.subscribe(children[i], "onClose", lang.hitch(this,this.closeWidget));
@@ -111,10 +112,10 @@ define(["dojo/_base/declare",
                     var frame = new WidgetFrame();
                     frame.setWidget(widget);
                     this.addChild(frame);
-
-                    on(frame, "onResizeStart", this, "frameResizing");
-                    on(frame, "onClose", this, "closeWidget");
-                    on(frame, "onResizeEnd", this, "ensureFrameIsVisible");
+                    console.info("在WidgetContaineronShowWidget中subscribe   onClose");
+                    topic.subscribe("onResizeStart", lang.hitch(this, this.frameResizing));
+                    topic.subscribe("onClose", lang.hitch(this,this.closeWidget));
+                    topic.subscribe("onResizeEnd", lang.hitch(this,this.ensureFrameIsVisible));
 
                     if (frames.length > 0) {
                         // Position it relative to the last frame
@@ -275,6 +276,7 @@ define(["dojo/_base/declare",
 
         frameResizing: function (/*String*/ frameId, /*Object*/ deltas) {
             // One of the frames is resizing. Make room, or snug up
+            console.info("frameResizing");
             try {
                 var children = this.getChildren();
 
@@ -311,6 +313,7 @@ define(["dojo/_base/declare",
         },
 
         closeWidget: function (/*String*/ frameId) {
+            console.info("通过topic.publish调用widget的关闭事件");
             try {
                 var computedStyle = domStyle.getComputedStyle(this.domNode);
                 var containerBox = domGeom.getContentBox(this.domNode, computedStyle);

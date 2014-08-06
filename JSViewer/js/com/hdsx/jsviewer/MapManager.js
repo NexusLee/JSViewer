@@ -87,14 +87,17 @@ define(["dojo/_base/declare",
                 // Unsubscribe from the event
                 this.configLoadedEventSubscribe.remove();
                 var params = {
-                    isZoomSlider: true,
-                    isPanArrows: false
+                    slider: false,
+//                    sliderStyle:"large",
+//                    sliderLabels:[3,,4,5,6,7,8,9,0],
+                    isPanArrows: false,
+                    logo: false
                 };
 
                 // Initial extent defined?
                 if (configData.map.initialExtent) {
                     var ext = configData.map.initialExtent;
-                    params.extent = new Extent(ext[0], ext[1], ext[2], ext[3], null);
+//                    params.extent = new Extent(ext[0], ext[1], ext[2], ext[3], null);
                 }
 
                 this.map = new Map(this.mapId, params);
@@ -103,20 +106,20 @@ define(["dojo/_base/declare",
                     // Ensure that the extent is what we asked for
                     setTimeout(lang.hitch(this, function () {
                         if (this.map.extent !== params.extent) {
-                            this.map.setExtent(params.extent);
+//                            this.map.setExtent(params.extent);
                         }
                     }), 1000);
 
-                    // Move the zoom slider down
-                    if (!this.map._slider) {
-                        console.error("Possible JS API change, private member _slider not available");
-                    }
-                    else {
-//                        domStyle.set(this.map._slider.domNode, {
-//                            top: "100px",
-//                            left: "25px"
-//                        });
-                    }
+//                    // Move the zoom slider down
+//                    if (!this.map._slider) {
+//                        console.error("Possible JS API change, private member _slider not available");
+//                    }
+//                    else {
+////                        domStyle.set(this.map._slider.domNode, {
+////                            top: "100px",
+////                            left: "25px"
+////                        });
+//                    }
 
                     // Init toolbars
                     this.navToolbar = new Navigation(this.map);
@@ -251,7 +254,7 @@ define(["dojo/_base/declare",
                                     zoomScale = parseInt(zoomScale);
                                 }
                                 if (zoomScale > 1) {
-                                    var currentScale = com.esri.solutions.jsviewer.util.scale.calculateScale(this.map);
+                                    var currentScale = util.scale.calculateScale(this.map);
                                     // expand/shrink the scale to match zoomScale
                                     if (zoomScale / currentScale > 2 || zoomScale / currentScale < 0.5) {
                                         zoomToExt = this.map.extent.expand(zoomScale / currentScale);

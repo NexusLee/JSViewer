@@ -8,6 +8,7 @@ define([
         "dojo/dnd/Moveable",
         "dojo/dom-geometry",
         "dojo/on",
+        "dojo/topic",
         "dojo/Evented",
         "dijit/_WidgetBase",
         "dijit/_TemplatedMixin",
@@ -19,7 +20,7 @@ define([
         "dojo/dnd/move",
         "dojo/i18n!./js/com/hdsx/jsviewer/nls/WidgetFrameStrings.js",
         "dojo/text!./templates/WidgetFrame.html"],
-    function (declare, array,lang, query,domClass,domAttr,Moveable,domGeom,on,Evented,_WidgetBase,
+    function (declare, array,lang, query,domClass,domAttr,Moveable,domGeom,on,topic,Evented,_WidgetBase,
               _TemplatedMixin, _Container, _Contained, domStyle, dojobasefx,fx, move,WidgetFrameStrings, template){
         return declare([_WidgetBase, _TemplatedMixin, _Container, _Contained,Evented], {
 
@@ -90,7 +91,7 @@ define([
 
                 // Look for a child dijit of type _Widget
                 for (var i = 0; i < children.length; i++){
-                    // Check by duck typing for com.esri.solutions.jsviewer._Widget
+                    // Check by duck typing for com.hdsx.jsviewer._Widget
                     var c = children[i];
 //                    if (c.setMap && c.setId && c.setAlarm && c.setTitle && c.setIcon && c.setState && c.setConfig){
 //                        this.setWidget(c, true);
@@ -154,7 +155,7 @@ define([
                 catch (err) { console.error(err); }
             },
 
-            setWidget: function(/*com.esri.solutions.jsviewer._Widget*/ widget, /*boolean*/ childAlreadyAdded) {
+            setWidget: function(/*com.hdsx.jsviewer._Widget*/ widget, /*boolean*/ childAlreadyAdded) {
                 // Only can set once
                 if (this.widget) {
                     return;
@@ -219,6 +220,7 @@ define([
             },
 
             onCloseClick: function(evt) {
+                topic.publish("onClose",this.id);
                 this.onClose(this.id);
             },
 
@@ -469,6 +471,7 @@ define([
             },
 
             onClose: function(/*String*/ frameId) {
+                return frameId;
                 // stub for event handling in WidgetContainer
             }
         });

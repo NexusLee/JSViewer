@@ -407,9 +407,9 @@ define([
 });
 
 dojo.require("dojo.i18n");
-dojo.requireLocalization("com.esri.solutions.jsviewer.widgets", "SearchWidgetStrings");
+dojo.requireLocalization("com.hdsx.jsviewer.widgets", "SearchWidgetStrings");
 dojo.declare(
-    "com.esri.solutions.jsviewer.widgets.SearchWidget",
-    [com.esri.solutions.jsviewer._BaseWidget, com.esri.solutions.jsviewer._MapGraphicsMaintainer],
+    "com.hdsx.jsviewer.widgets.SearchWidget",
+    [com.hdsx.jsviewer._BaseWidget, com.hdsx.jsviewer._MapGraphicsMaintainer],
 
 );
