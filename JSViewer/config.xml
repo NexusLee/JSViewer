@@ -15,7 +15,7 @@
 	</userinterface>
 	<map initialExtent="93.81639237382156 32.61628418723667 120.29979336871257 39.30256961361975" fullExtent="73.44696044921875 3.408477306365967 135.08583068847656 53.557926177978516">
 		<basemaps menu="menuMap">
-			<mapservice label="Street Map" type="dynamic" visible="true" alpha="1" icon="assets/images/icons/i_highway.png">http://localhost:6080/arcgis/rest/services/OilGISTestService/MapServer</mapservice>
+			<mapservice label="底图" type="dynamic" visible="true" alpha="1" icon="assets/images/icons/i_highway.png">http://localhost:6080/arcgis/rest/services/OilGISTestService/MapServer</mapservice>
             <!--<mapservice label="Street Map2" type="tiled" visible="false" alpha="1" icon="assets/images/icons/i_highway.png">http://localhost:6080/arcgis/rest/services/OilGISTestService/MapServer</mapservice>-->
 		</basemaps>
 		<!--<livemaps>-->

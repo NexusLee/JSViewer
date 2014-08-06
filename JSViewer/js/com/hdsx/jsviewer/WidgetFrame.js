@@ -203,7 +203,7 @@ define([
             },
 
             onBadgeClick: function(evt) {
-                //console.log("onBadgeClick " + evt.target);
+                console.log("onBadgeClick " + evt.target);
                 if (this.state === "maximized") {
                     // Start minimizing
                     this.minimize();
@@ -220,7 +220,6 @@ define([
             },
 
             onCloseClick: function(evt) {
-                topic.publish("onClose",this.id);
                 this.onClose(this.id);
             },
 
@@ -406,6 +405,14 @@ define([
                                 paddingLeft: 0,
                                 paddingRight: 0
                             },
+                            onBegin:lang.hitch(this,function(){
+                                var badgeSlide = dojobasefx.animateProperty({
+                                    node: this.badgeNode,
+                                    duration: duration,
+                                    properties: badgeEndProperties
+                                });
+                                fx.chain([badgeSlide]).play();
+                            }),
                             onEnd: lang.hitch(this, function () {
                                 console.info("水平最大化动画onEnd");
                                 var hGrow = dojobasefx.animateProperty({
@@ -427,8 +434,8 @@ define([
                                         console.info("垂直最大化动画onEnd");
                                         this.state = "maximized";
                                         domStyle.set(this.contentNode, "overflow", "auto");
-                                        //domStyle.set(this.boxNode, boxEndProperties);
                                         query(".widgetButton", this.domNode).style("display", "block");
+                                        this.onResizeEnd(this);
                                     }),
                                     properties: {
                                         height: boxEndProperties.height,
@@ -471,6 +478,7 @@ define([
             },
 
             onClose: function(/*String*/ frameId) {
+                topic.publish("onClose",this.id);
                 return frameId;
                 // stub for event handling in WidgetContainer
             }

@@ -18,8 +18,6 @@ define(["dojo/_base/declare",
                 try {
                     this.inherited(arguments);
                     if (this.configData) {
-//                        this.mapService = this.configData.overview.mapservice;
-//                        this.serviceType = this.configData.overview.servicetype;
                     }
                 }
                 catch (err) {
