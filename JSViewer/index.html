@@ -42,7 +42,7 @@
                         esriConfig.defaults.io.proxyUrl = "proxy.php";
                         if (util) {
                             var screen = util.pageBox();
-                            topic.publish("mapResizeRequestEvent", [screen])
+                            topic.publish("mapResizeRequestEvent", screen)
                         }
                     });
                 });

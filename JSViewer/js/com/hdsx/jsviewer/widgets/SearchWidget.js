@@ -208,7 +208,7 @@ define([
                         console.error("Unknown toolbutton pressed: " + evt.target.title);
                         return;
                 }
-                topic.publish("widgetDrawRequestEvent", [params]);
+                topic.publish("widgetDrawRequestEvent", params);
             }
         },
 

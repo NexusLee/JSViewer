@@ -30,8 +30,8 @@
       <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/JSViewer/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.029411" vertical-offset="250" max-vertical-offset="1825">
-              <caret line="25" column="33" selection-start-line="25" selection-start-column="33" selection-end-line="25" selection-end-column="33" />
+            <state vertical-scroll-proportion="-4.970588" vertical-offset="1031" max-vertical-offset="1825">
+              <caret line="48" column="40" selection-start-line="48" selection-start-column="40" selection-end-line="48" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -49,15 +49,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WidgetContainer.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="WidgetContainer.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/JSViewer/js/com/hdsx/jsviewer/WidgetContainer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.434375" vertical-offset="3911" max-vertical-offset="8050">
-              <caret line="228" column="36" selection-start-line="228" selection-start-column="36" selection-end-line="228" selection-end-column="36" />
+            <state vertical-scroll-proportion="-2.1176472" vertical-offset="1228" max-vertical-offset="7650">
+              <caret line="52" column="76" selection-start-line="52" selection-start-column="76" selection-end-line="52" selection-end-column="76" />
               <folding>
                 <element signature="e#4945#5387#0" expanded="false" />
                 <element signature="e#5424#6423#0" expanded="false" />
                 <element signature="e#6462#7554#0" expanded="false" />
+                <element signature="e#9119#9697#0" expanded="false" />
                 <element signature="e#9730#10134#0" expanded="false" />
               </folding>
             </state>
@@ -76,21 +77,50 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WidgetFrame.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="WidgetFrame.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/JSViewer/js/com/hdsx/jsviewer/WidgetFrame.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="8098" max-vertical-offset="8925">
-              <caret line="446" column="0" selection-start-line="446" selection-start-column="0" selection-end-line="446" selection-end-column="0" />
+            <state vertical-scroll-proportion="3.659274" vertical-offset="7460" max-vertical-offset="9800">
+              <caret line="453" column="18" selection-start-line="453" selection-start-column="18" selection-end-line="453" selection-end-column="18" />
               <folding>
                 <element signature="e#5652#5954#0" expanded="false" />
                 <element signature="e#6058#7970#0" expanded="false" />
-                <element signature="e#8676#10201#0" expanded="false" />
                 <element signature="e#12708#13026#0" expanded="false" />
                 <element signature="e#13091#13178#0" expanded="false" />
                 <element signature="e#14370#14728#0" expanded="false" />
                 <element signature="e#18471#19691#0" expanded="false" />
-                <element signature="e#20865#21024#0" expanded="false" />
+                <element signature="e#20895#21054#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DrawWidget.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/JSViewer/js/com/hdsx/jsviewer/widgets/DrawWidget.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="6024" max-vertical-offset="12450">
+              <caret line="244" column="16" selection-start-line="244" selection-start-column="16" selection-end-line="244" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SearchWidget.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/JSViewer/js/com/hdsx/jsviewer/widgets/SearchWidget.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="5174" max-vertical-offset="10500">
+              <caret line="210" column="62" selection-start-line="210" selection-start-column="62" selection-end-line="210" selection-end-column="62" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ControllerMenu.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/JSViewer/js/com/hdsx/jsviewer/ControllerMenu.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1884" max-vertical-offset="5100">
+              <caret line="90" column="40" selection-start-line="90" selection-start-column="40" selection-end-line="90" selection-end-column="40" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -100,38 +130,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="636" max-vertical-offset="1450">
               <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="OverviewWidget.json" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/JSViewer/js/com/hdsx/jsviewer/widgets/config/OverviewWidget.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="125" max-vertical-offset="275">
-              <caret line="5" column="1" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MapManager.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/JSViewer/js/com/hdsx/jsviewer/MapManager.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="10109" max-vertical-offset="10850">
-              <caret line="408" column="29" selection-start-line="408" selection-start-column="29" selection-end-line="408" selection-end-column="29" />
-              <folding>
-                <marker date="1407319818376" expanded="false" signature="1172:1186" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="config.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/JSViewer/config.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="125" max-vertical-offset="1375">
-              <caret line="16" column="33" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -147,7 +145,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/JSViewer/js/com/esri/solutions/jsviewer/WidgetFrame.js" />
         <option value="$PROJECT_DIR$/JSViewer/js/com/esri/solutions/jsviewer/widgets/BookmarkWidget.js" />
         <option value="$PROJECT_DIR$/JSViewer/js/com/esri/solutions/jsviewer/widgets/templates/BookmarkWidget.html" />
         <option value="$PROJECT_DIR$/JSViewer/js/com/esri/solutions/jsviewer/widgets/templates/DrawWidget.html" />
@@ -175,7 +172,6 @@
         <option value="$PROJECT_DIR$/JSViewer/js/com/hdsx/solutions/jsviewer/ControllerMenu.js" />
         <option value="$PROJECT_DIR$/JSViewer/js/com/hdsx/solutions/jsviewer/ControllerMenuItem.js" />
         <option value="$PROJECT_DIR$/JSViewer/js/com/hdsx/solutions/jsviewer/DataManager.js" />
-        <option value="$PROJECT_DIR$/JSViewer/js/com/hdsx/jsviewer/ConfigManager.js" />
         <option value="$PROJECT_DIR$/JSViewer/js/com/hdsx/jsviewer/_Widget.js" />
         <option value="$PROJECT_DIR$/JSViewer/js/com/hdsx/jsviewer/ControllerMenu.js" />
         <option value="$PROJECT_DIR$/JSViewer/js/com/hdsx/jsviewer/DataManager.js" />
@@ -184,8 +180,6 @@
         <option value="$PROJECT_DIR$/JSViewer/js/com/hdsx/jsviewer/util.js" />
         <option value="$PROJECT_DIR$/JSViewer/js/com/hdsx/jsviewer/util副本.js" />
         <option value="$PROJECT_DIR$/JSViewer/js/com/hdsx/jsviewer/widgets/BookmarkWidget.js" />
-        <option value="$PROJECT_DIR$/JSViewer/js/com/hdsx/jsviewer/widgets/SearchWidget.js" />
-        <option value="$PROJECT_DIR$/JSViewer/index.html" />
         <option value="$PROJECT_DIR$/JSViewer/jsviewer.css" />
         <option value="$PROJECT_DIR$/JSViewer/js/com/hdsx/jsviewer/InfoPopup.js" />
         <option value="$PROJECT_DIR$/JSViewer/js/com/hdsx/jsviewer/_BaseWidget.js" />
@@ -197,6 +191,10 @@
         <option value="$PROJECT_DIR$/JSViewer/js/com/hdsx/jsviewer/WidgetManager.js" />
         <option value="$PROJECT_DIR$/JSViewer/js/com/hdsx/jsviewer/Controller.js" />
         <option value="$PROJECT_DIR$/JSViewer/js/com/hdsx/jsviewer/WidgetContainer.js" />
+        <option value="$PROJECT_DIR$/JSViewer/js/com/hdsx/jsviewer/widgets/DrawWidget.js" />
+        <option value="$PROJECT_DIR$/JSViewer/js/com/hdsx/jsviewer/widgets/SearchWidget.js" />
+        <option value="$PROJECT_DIR$/JSViewer/index.html" />
+        <option value="$PROJECT_DIR$/JSViewer/js/com/hdsx/jsviewer/ConfigManager.js" />
         <option value="$PROJECT_DIR$/JSViewer/js/com/hdsx/jsviewer/WidgetFrame.js" />
       </list>
     </option>
@@ -451,16 +449,16 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="0" width="1378" height="744" extended-state="0" />
+    <frame x="-8" y="0" width="1378" height="744" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32867134" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32867134" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3881119" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.45104894" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21332335" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33041957" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33041957" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41083917" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -536,16 +534,6 @@
           <url>file://$PROJECT_DIR$/JSViewer/js/com/hdsx/jsviewer/_BaseWidget.js</url>
           <line>44</line>
           <option name="timeStamp" value="279" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/JSViewer/js/com/hdsx/jsviewer/WidgetContainer.js</url>
-          <line>222</line>
-          <option name="timeStamp" value="291" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/JSViewer/js/com/hdsx/jsviewer/WidgetContainer.js</url>
-          <line>223</line>
-          <option name="timeStamp" value="292" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -647,13 +635,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/JSViewer/js/com/hdsx/jsviewer/widgets/DrawWidget.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="5000" max-vertical-offset="12450">
-          <caret line="184" column="60" selection-start-line="184" selection-start-column="60" selection-end-line="184" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/JSViewer/js/com/hdsx/jsviewer/widgets/GeoRSSConfigWidget.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="509">
@@ -689,13 +670,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/JSViewer/js/com/hdsx/jsviewer/widgets/SearchWidget.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="10500">
-          <caret line="1" column="5" selection-start-line="1" selection-start-column="5" selection-end-line="1" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/JSViewer/js/com/hdsx/jsviewer/widgets/ServiceAreaWidget.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="509">
@@ -707,14 +681,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1925">
           <caret line="42" column="13" selection-start-line="42" selection-start-column="13" selection-end-line="42" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/JSViewer/js/com/hdsx/jsviewer/ControllerMenu.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5100">
-          <caret line="11" column="18" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -808,14 +774,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/JSViewer/js/com/hdsx/jsviewer/ConfigManager.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="6533" max-vertical-offset="9525">
-          <caret line="267" column="20" selection-start-line="267" selection-start-column="20" selection-end-line="267" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://D:/DevelopAPI/arcgis_js_v38_api/arcgis_js_api/library/3.8/3.8/js/esri/widgets.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33333334" vertical-offset="37190" max-vertical-offset="40225">
@@ -829,7 +787,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="10109" max-vertical-offset="10850">
           <caret line="408" column="29" selection-start-line="408" selection-start-column="29" selection-end-line="408" selection-end-column="29" />
           <folding>
-            <marker date="1407319818376" expanded="false" signature="1172:1186" placeholder="..." />
+            <marker date="1407319818376" expanded="false" signature="-1:-1" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -854,14 +812,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.31578946" vertical-offset="0" max-vertical-offset="475">
           <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/JSViewer/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.029411" vertical-offset="250" max-vertical-offset="1825">
-          <caret line="25" column="33" selection-start-line="25" selection-start-column="33" selection-end-line="25" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -904,19 +854,59 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/JSViewer/js/com/hdsx/jsviewer/WidgetFrame.js">
+    <entry file="file://$PROJECT_DIR$/JSViewer/js/com/hdsx/jsviewer/ControllerMenu.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="8098" max-vertical-offset="8925">
-          <caret line="446" column="0" selection-start-line="446" selection-start-column="0" selection-end-line="446" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1884" max-vertical-offset="5100">
+          <caret line="90" column="40" selection-start-line="90" selection-start-column="40" selection-end-line="90" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSViewer/js/com/hdsx/jsviewer/widgets/DrawWidget.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="6024" max-vertical-offset="12450">
+          <caret line="244" column="16" selection-start-line="244" selection-start-column="16" selection-end-line="244" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSViewer/js/com/hdsx/jsviewer/widgets/SearchWidget.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="5174" max-vertical-offset="10500">
+          <caret line="210" column="62" selection-start-line="210" selection-start-column="62" selection-end-line="210" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSViewer/js/com/hdsx/jsviewer/ConfigManager.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.5544355" vertical-offset="1375" max-vertical-offset="5250">
+          <caret line="44" column="37" selection-start-line="44" selection-start-column="37" selection-end-line="44" selection-end-column="37" />
           <folding>
-            <element signature="e#5652#5954#0" expanded="false" />
-            <element signature="e#6058#7970#0" expanded="false" />
-            <element signature="e#8676#10201#0" expanded="false" />
-            <element signature="e#12708#13026#0" expanded="false" />
-            <element signature="e#13091#13178#0" expanded="false" />
-            <element signature="e#14370#14728#0" expanded="false" />
-            <element signature="e#18471#19691#0" expanded="false" />
-            <element signature="e#20865#21024#0" expanded="false" />
+            <element signature="e#9593#9639#0" expanded="false" />
+            <marker date="1407378760851" expanded="false" signature="-1:-1" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSViewer/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.970588" vertical-offset="1031" max-vertical-offset="1825">
+          <caret line="48" column="40" selection-start-line="48" selection-start-column="40" selection-end-line="48" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSViewer/js/com/hdsx/jsviewer/WidgetContainer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.1176472" vertical-offset="1228" max-vertical-offset="7650">
+          <caret line="52" column="76" selection-start-line="52" selection-start-column="76" selection-end-line="52" selection-end-column="76" />
+          <folding>
+            <element signature="e#4945#5387#0" expanded="false" />
+            <element signature="e#5424#6423#0" expanded="false" />
+            <element signature="e#6462#7554#0" expanded="false" />
+            <element signature="e#9119#9697#0" expanded="false" />
+            <element signature="e#9730#10134#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -931,15 +921,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/JSViewer/js/com/hdsx/jsviewer/WidgetContainer.js">
+    <entry file="file://$PROJECT_DIR$/JSViewer/js/com/hdsx/jsviewer/WidgetFrame.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.434375" vertical-offset="3911" max-vertical-offset="8050">
-          <caret line="228" column="36" selection-start-line="228" selection-start-column="36" selection-end-line="228" selection-end-column="36" />
+        <state vertical-scroll-proportion="3.659274" vertical-offset="7460" max-vertical-offset="9800">
+          <caret line="453" column="18" selection-start-line="453" selection-start-column="18" selection-end-line="453" selection-end-column="18" />
           <folding>
-            <element signature="e#4945#5387#0" expanded="false" />
-            <element signature="e#5424#6423#0" expanded="false" />
-            <element signature="e#6462#7554#0" expanded="false" />
-            <element signature="e#9730#10134#0" expanded="false" />
+            <element signature="e#5652#5954#0" expanded="false" />
+            <element signature="e#6058#7970#0" expanded="false" />
+            <element signature="e#12708#13026#0" expanded="false" />
+            <element signature="e#13091#13178#0" expanded="false" />
+            <element signature="e#14370#14728#0" expanded="false" />
+            <element signature="e#18471#19691#0" expanded="false" />
+            <element signature="e#20895#21054#0" expanded="false" />
           </folding>
         </state>
       </provider>

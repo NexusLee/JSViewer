@@ -452,12 +452,11 @@ define([
                 var bb = {
                     w: domBox.w, h: boxBox.h, t: domBox.t, l: domBox.l
                 };
-                //console.dir(bb);
                 return bb;
             },
 
             onResizeStart: function(/*String*/ frameId, /*Object*/ endBounds) {
-
+                topic.publish("onResizeStart",frameId,endBounds);
             },
 
             onResizeEnd: function(/*WidgetFrame*/ frame) {

@@ -201,7 +201,7 @@ define([
 
         shutdown: function () {
             this.clearGraphics();
-            topic.publish("widgetDrawRequestEvent", [null]);
+            topic.publish("widgetDrawRequestEvent", null);
             this.inherited(arguments);
         },
 

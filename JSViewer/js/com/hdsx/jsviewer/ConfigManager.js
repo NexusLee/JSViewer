@@ -32,7 +32,6 @@ define([
         },
 
         configLoad: function () {
-            var self = this;
             xhr("config.xml", {
                 handleAs: "xml",
                 sync: true
@@ -190,7 +189,6 @@ define([
                 var proxyNode = util.xml.getNodes("configuration", "proxytype", response)[0];
                 this.configData.proxyType = util.xml.getValue(proxyNode);
                 // Publish configuration object
-                console.log("publishing configData...");
                 topic.publish("config/configLoadedEvent", this.configData);
                 console.dir(this.configData);
                 // Always return response object for Deferreds
