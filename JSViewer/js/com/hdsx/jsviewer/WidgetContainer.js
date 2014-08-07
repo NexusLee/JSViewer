@@ -16,10 +16,8 @@ define(["dojo/_base/declare",
     "com/hdsx/jsviewer/WidgetFrame",
     "com/hdsx/jsviewer/_Widget",
     "dojo/text!./templates/WidgetContainer.html"
-], function (declare, _WidgetBase,
-             _TemplatedMixin, _Container,lang, on,topic,
-             domGeom, domClass, query,
-             domStyle, array, fx,dojobasefx,
+], function (declare, _WidgetBase,_TemplatedMixin,_Container,lang,
+             on,topic,domGeom, domClass, query,domStyle, array, fx,dojobasefx,
              nodeListFx, WidgetFrame, _Widget, template) {
     return declare([_WidgetBase, _TemplatedMixin, _Container], {
         templateString: template,
@@ -38,16 +36,13 @@ define(["dojo/_base/declare",
             // showWidget event: create if necessary, maximize
             topic.subscribe("showWidget", lang.hitch(this,this.onShowWidget));
 
-            // Map resized, adjust widget placement
+            //当地图大小改变时，调整widget位置
             topic.subscribe("mapResizedEvent", lang.hitch(this,this.onMapResize));
-
-            //console.log("WidgetContainer postCreate end");
         },
         startup: function () {
             if (this._started) {
                 return;
             }
-            console.log("WidgetContainer startup");
             var children = this.getChildren();
             // Pass to children
             array.forEach(children, function (child) {
@@ -55,12 +50,11 @@ define(["dojo/_base/declare",
             });
             console.info("在WidgetContainerstartup中subscribe   onClose");
             for (var i = 0; i < children.length; i++) {
-                topic.subscribe(children[i], "onResizeStart", lang.hitch(this,this.frameResizing));
-                topic.subscribe(children[i], "onClose", lang.hitch(this,this.closeWidget));
-                topic.subscribe(children[i], "onResizeEnd", lang.hitch(this,this.ensureFrameIsVisible));
+                topic.subscribe("onResizeStart", lang.hitch(this,this.frameResizing));
+                topic.subscribe("onClose", lang.hitch(this,this.closeWidget));
+                topic.subscribe("onResizeEnd", lang.hitch(this,this.ensureFrameIsVisible));
             }
-            // change layout from width 400, right 0
-            // to width 0, right 400
+            // 将布局从width 400, right 0更改到width 0, right 400
             try {
                 var w = parseInt(domStyle.get(this.domNode, "width"));
                 var r = parseInt(domStyle.get(this.domNode, "right"));
@@ -75,7 +69,6 @@ define(["dojo/_base/declare",
             catch (err) {
                 console.error(err);
             }
-            console.log("WC::startup finished");
             this.inherited(arguments);
         },
         onMapResize: function (/*Object*/ mapBox) {
@@ -87,9 +80,8 @@ define(["dojo/_base/declare",
         },
 
         onShowWidget: function (widget) {
-            console.log("WidgetContainer::onShowWidget");
             if (widget) {
-                // Look for the widget
+                // 查找widget
                 var bFound = false;
                 var frames = this.getChildren();
                 for (var i = 0; i < frames.length; i++) {
@@ -108,11 +100,10 @@ define(["dojo/_base/declare",
                 }
 
                 if (!bFound) {
-                    // Did not find widget. Create a new frame & add
+                    // 没有找到widget,创建一个并添加
                     var frame = new WidgetFrame();
                     frame.setWidget(widget);
                     this.addChild(frame);
-                    console.info("在WidgetContaineronShowWidget中subscribe   onClose");
                     topic.subscribe("onResizeStart", lang.hitch(this, this.frameResizing));
                     topic.subscribe("onClose", lang.hitch(this,this.closeWidget));
                     topic.subscribe("onResizeEnd", lang.hitch(this,this.ensureFrameIsVisible));
@@ -227,6 +218,7 @@ define(["dojo/_base/declare",
         },
 
         positionFrameAfterFrame: function (/*WidgetFrame*/ frameToPlace, /*WidgetFrame*/ afterFrame) {
+            console.info("多个widget的时候，修改widget的位置");
             var bBox = afterFrame.getBoundingBox();
             var y = bBox.t + bBox.h + 20;
             domStyle.set(frameToPlace.domNode, "top", y + "px");
@@ -251,6 +243,7 @@ define(["dojo/_base/declare",
         },
 
         minimize: function () {
+            console.info("WidgetContainer::minimize方法");
             var slideDistance = parseInt(domStyle.get(this.domNode, "right"));
             var allFrames = query(".widgetFrame", this.domNode);
 
@@ -263,6 +256,7 @@ define(["dojo/_base/declare",
         },
 
         maximize: function () {
+            console.info("WidgetContainer::minimize方法");
             var allFrames = query(".widgetFrame", this.domNode);
 
             allFrames.fadeIn().play();
@@ -272,7 +266,6 @@ define(["dojo/_base/declare",
                 }
             }).play();
         },
-
 
         frameResizing: function (/*String*/ frameId, /*Object*/ deltas) {
             // One of the frames is resizing. Make room, or snug up

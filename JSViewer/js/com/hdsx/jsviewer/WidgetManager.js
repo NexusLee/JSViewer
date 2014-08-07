@@ -38,7 +38,6 @@ define([
         onConfig: function (configData) {
             console.log("WidgetManager::onConfig");
             this.configData = configData;
-            // Unsubscribe from the event
             this.configLoadedEventSubscribe.remove();
             // Make note of the defined widgets
             // and dojo.require them

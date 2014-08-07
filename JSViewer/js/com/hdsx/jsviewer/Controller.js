@@ -18,20 +18,16 @@ define([
              _Container, string, query,topic,aspect,domStyle,domClass,ControllerMenu, ControllerStrings, template) {
     return declare([_WidgetBase, _TemplatedMixin, _Container], {
         templateString: template,
-        i18nStrings: null,
+        i18nStrings: ControllerStrings,
         map: null,
         configData: null,
         menuItemData: null,
         onConfigLoadedEventSubscribe:null,
 
         postMixInProperties: function () {
-            //console.log("Controller postMixInProperties");
-            // Init i18n
-            this.i18nStrings = ControllerStrings;
         },
 
         postCreate: function () {
-            //console.log("Controller postCreate");
             this.onConfigLoadedEventSubscribe = topic.subscribe("config/configLoadedEvent",lang.hitch(this,this.onConfig));
             topic.subscribe("mapLoadedEvent", lang.hitch(this,this.onMapLoad));
             topic.subscribe("mapToolChangedEvent", lang.hitch(this,this.onMapToolChange));
@@ -42,7 +38,6 @@ define([
             if (this._started) {
                 return;
             }
-            //console.log("Controller startup");
             // Pass to children
             var children = this.getChildren();
             array.forEach(children, function (child) {
@@ -103,9 +98,7 @@ define([
         createMenus: function () {
             if (this.configData) {
                 var nMenus = this.configData.ui.menus.length;
-                console.warn("nMenus::" + nMenus);
                 var stepPct = 100 / (nMenus + 1);
-                console.warn("stepPct::" + stepPct);
                 for (var i = 0; i < nMenus; i++) {
                     var menuConfig = this.configData.ui.menus[i];
                     menuConfig.positionAsPct = (i + 1) * stepPct;
@@ -130,7 +123,7 @@ define([
                     },true);
 
 
-                    // Add menu items
+                    // 添加菜单项
                     array.forEach(this.menuItemData[menuConfig.id], lang.hitch(this, function (item) {
                         menu.addMenuItem(item);
                     }));

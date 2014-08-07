@@ -63,10 +63,6 @@ define([
                 if (this.title === "") {
                     this.title = "No Title Given";
                 }
-
-                // Init i18n
-//                this.i18nStrings = WidgetFrameStrings;
-                //console.log("WidgetFrame::postMixInProperties end");
             },
 
             postCreate: function() {
@@ -93,10 +89,6 @@ define([
                 for (var i = 0; i < children.length; i++){
                     // Check by duck typing for com.hdsx.jsviewer._Widget
                     var c = children[i];
-//                    if (c.setMap && c.setId && c.setAlarm && c.setTitle && c.setIcon && c.setState && c.setConfig){
-//                        this.setWidget(c, true);
-//                        break;
-//                    }
                     if (c.setMap && c.setId && c.setTitle && c.setIcon && c.setState && c.setConfig){
                         this.setWidget(c, true);
                         break;
@@ -142,8 +134,6 @@ define([
                 dojobasefx.fadeIn({
                     node: this.domNode
                 }).play();
-
-                //console.log("WF::startup finished");
             },
 
             setIcon: function(/* String */ icon) {
@@ -379,9 +369,7 @@ define([
                 if (duration !== 0 && !duration) {
                     duration = 350;
                 }
-                console.info("最大化延时::" + duration);
                 if (duration <= 0) {
-                    console.info("最大不使用动画效果");
                     // 不使用动画效果
                     for (var key in boxEndProperties) {
                         boxEndProperties[key] = boxEndProperties[key] + "px";
@@ -414,7 +402,6 @@ define([
                                 fx.chain([badgeSlide]).play();
                             }),
                             onEnd: lang.hitch(this, function () {
-                                console.info("水平最大化动画onEnd");
                                 var hGrow = dojobasefx.animateProperty({
                                     node: this.boxNode,
                                     properties: {
@@ -460,8 +447,8 @@ define([
                 var computedStyledomNode = domStyle.getComputedStyle(this.domNode);
                 var computedStyleboxNode = domStyle.getComputedStyle(this.boxNode);
 
-                var domBox = domGeom.getMarginBox(computedStyledomNode);
-                var boxBox = domGeom.getMarginBox(computedStyleboxNode);
+                var domBox = domGeom.getMarginBox(this.domNode,computedStyledomNode);
+                var boxBox = domGeom.getMarginBox(this.boxNode,computedStyleboxNode);
                 var bb = {
                     w: domBox.w, h: boxBox.h, t: domBox.t, l: domBox.l
                 };
