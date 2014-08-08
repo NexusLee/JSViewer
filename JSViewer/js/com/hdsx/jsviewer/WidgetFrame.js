@@ -9,7 +9,6 @@ define([
         "dojo/dom-geometry",
         "dojo/on",
         "dojo/topic",
-        "dojo/Evented",
         "dijit/_WidgetBase",
         "dijit/_TemplatedMixin",
         "dijit/_Container",
@@ -20,10 +19,8 @@ define([
         "dojo/dnd/move",
         "dojo/i18n!./js/com/hdsx/jsviewer/nls/WidgetFrameStrings.js",
         "dojo/text!./templates/WidgetFrame.html"],
-    function (declare, array,lang, query,domClass,domAttr,Moveable,domGeom,on,topic,Evented,_WidgetBase,
-              _TemplatedMixin, _Container, _Contained, domStyle, dojobasefx,fx, move,WidgetFrameStrings, template){
-        return declare([_WidgetBase, _TemplatedMixin, _Container, _Contained,Evented], {
-
+    function (declare, array, lang, query, domClass, domAttr, Moveable, domGeom, on, topic,_WidgetBase, _TemplatedMixin, _Container, _Contained, domStyle, dojobasefx, fx, move, WidgetFrameStrings, template) {
+        return declare([_WidgetBase, _TemplatedMixin, _Container, _Contained], {
             // The widget
             widget: null,
             // configured by attributes
@@ -37,14 +34,14 @@ define([
             contentNode: null,
             titleNode: null,
 
-            i18nStrings : WidgetFrameStrings,
+            i18nStrings: WidgetFrameStrings,
             // Dynamic measurements taken after the frame is laid out in postCreate
             widgetWidth: 100,
             boxMaximized: null, // initialized in constructor
 
             templateString: template,
 
-            constructor: function() {
+            constructor: function () {
                 this.boxMaximized = {
                     w: 100,
                     h: [], // one for each panel
@@ -55,7 +52,7 @@ define([
                     marginLeft: 100
                 };
             },
-            postMixInProperties: function() {
+            postMixInProperties: function () {
                 //console.log("WidgetFrame::postMixInProperties");
                 if (this.icon === "") {
                     this.icon = "assets/images/icons/i_pushpin.png";
@@ -65,8 +62,8 @@ define([
                 }
             },
 
-            postCreate: function() {
-                //console.log("WidgetFrame postCreate");
+            postCreate: function () {
+                this.inherited(arguments);
                 try {
                     // Find Frame DOM nodes
                     this.boxNode = query(".widgetBadgedPane", this.domNode)[0];
@@ -74,24 +71,31 @@ define([
                     this.contentNode = query(".widgetHolder", this.domNode)[0];
                     this.titleNode = query("#.widgetTitle", this.domNode)[0];
                 }
-                catch (err) {console.error(err);}
-                //console.log("WidgetFrame postCreate finished");
+                catch (err) {
+                    console.error(err);
+                }
             },
 
-            startup: function() {
-                if(this._started){ return; }
+            startup: function () {
+                if (this._started) {
+                    return;
+                }
                 //console.log("WF::startup");
                 // Pass to children
                 var children = this.getChildren();
-                array.forEach(children, function(child){ child.startup(); });
+                array.forEach(children, function (child) {
+                    child.startup();
+                });
 
                 // Look for a child dijit of type _Widget
-                for (var i = 0; i < children.length; i++){
+                for (var i = 0; i < children.length; i++) {
                     // Check by duck typing for com.hdsx.jsviewer._Widget
                     var c = children[i];
-                    if (c.setMap && c.setId && c.setTitle && c.setIcon && c.setState && c.setConfig){
+                    if (c.setMap && c.setId && c.setTitle && c.setIcon && c.setState && c.setConfig) {
                         this.setWidget(c, true);
                         break;
+                    }else{
+                        console.warn("不是widget类型");
                     }
                 }
 
@@ -121,7 +125,7 @@ define([
                 }
                 this.widget.showPanel(0);
 
-                if (this.state === "minimized"){
+                if (this.state === "minimized") {
                     // Minimize the widget, in zero elapsed time
                     this.minimize(0);
                 }
@@ -129,32 +133,31 @@ define([
                     // Maximize the widget, in zero elapsed time
                     this.maximize(0);
                 }
-
                 // Fade in
                 dojobasefx.fadeIn({
                     node: this.domNode
                 }).play();
             },
 
-            setIcon: function(/* String */ icon) {
+            setIcon: function (/* String */ icon) {
                 try {
                     this.icon = icon;
                     domStyle.set(this.badgeNode, "backgroundImage",
-                            "url(" + require.toUrl("com/hdsx/jsviewer/" +  icon) + ")");
+                            "url(" + require.toUrl("com/hdsx/jsviewer/" + icon) + ")");
                 }
-                catch (err) { console.error(err); }
+                catch (err) {
+                    console.error(err);
+                }
             },
 
-            setWidget: function(/*com.hdsx.jsviewer._Widget*/ widget, /*boolean*/ childAlreadyAdded) {
+            setWidget: function (/*com.hdsx.jsviewer._Widget*/ widget, /*boolean*/ childAlreadyAdded) {
                 // Only can set once
                 if (this.widget) {
                     return;
                 }
-
                 if (!childAlreadyAdded) {
                     this.addChild(widget);
                 }
-
                 //console.log("WF::setWidget");
                 this.widget = widget;
 
@@ -170,12 +173,12 @@ define([
                     var minBtn = query(".wbMinimize", this.domNode)[0];
                     minBtnTd = minBtn.parentNode;
                     if (widget.panels.length > 1) {
-                        array.forEach(widget.panels, lang.hitch(this, function(item, idx, arr){
+                        array.forEach(widget.panels, lang.hitch(this, function (item, idx, arr) {
                             var td = document.createElement("TD");
                             var btn = document.createElement("DIV");
                             domClass.add(btn, "widgetButton");
                             domStyle.set(btn, "backgroundImage",
-                                    "url(" + require.toUrl("com/hdsx/jsviewer/"+ item.buttonIcon) + ")");
+                                    "url(" + require.toUrl("com/hdsx/jsviewer/" + item.buttonIcon) + ")");
                             domAttr.set(btn, "title", item.buttonText);
                             if (this.state === "minimized") {
                                 domStyle.set(btn, "display", "none");
@@ -183,17 +186,18 @@ define([
 
                             td.appendChild(btn);
                             minBtnTd.parentNode.insertBefore(td, minBtnTd);
-                            on(btn, "click", lang.hitch(this, function(){
+                            on(btn, "click", lang.hitch(this, function () {
                                 this.selectPanel(idx);
                             }));
                         }));
                     }
                 }
-                catch (err) {console.error(err);}
+                catch (err) {
+                    console.error(err);
+                }
             },
 
-            onBadgeClick: function(evt) {
-                console.log("onBadgeClick " + evt.target);
+            onBadgeClick: function (evt) {
                 if (this.state === "maximized") {
                     // Start minimizing
                     this.minimize();
@@ -202,25 +206,26 @@ define([
                     // Start maximizing
                     this.maximize();
                 }
+                //otherwise:正在进行动画，忽略点击
                 // otherwise: we're animating, ignore the click
             },
 
-            onMinClick: function(evt) {
+            onMinClick: function (evt) {
                 this.minimize();
             },
 
-            onCloseClick: function(evt) {
+            onCloseClick: function (evt) {
                 this.onClose(this.id);
             },
 
-            selectPanel: function(index) {
+            selectPanel: function (index) {
                 if (index !== this.widget.panelIndex) {
                     try {
                         // Start transition, change panel, finish transition
                         var firstHalf = dojobasefx.fadeOut({
                             node: this.contentNode,
                             duration: 150,
-                            onEnd: lang.hitch(this, function(){
+                            onEnd: lang.hitch(this, function () {
                                 this.widget.showPanel(index);
                             })
                         });
@@ -238,7 +243,8 @@ define([
                             properties: {
                                 height: this.boxMaximized.h[index]
                             },
-                            onEnd: lang.hitch(this, function(){
+                            onEnd: lang.hitch(this, function () {
+                                console.info("select panle 动画结束");
                                 this.onResizeEnd(this);
                             })
                         });
@@ -251,7 +257,7 @@ define([
                 }
             },
 
-            minimize: function(duration) {
+            minimize: function (duration) {
                 //console.log("minimizing!");
                 var boxEndProperties = {
                     height: 20,
@@ -294,7 +300,7 @@ define([
                         var vShrink = dojobasefx.animateProperty({
                             node: this.boxNode,
                             duration: duration,
-                            beforeBegin: lang.hitch(this, function() {
+                            beforeBegin: lang.hitch(this, function () {
                                 domStyle.set(this.contentNode, "overflow", "hidden");
                                 query(".widgetButton", this.domNode).style("display", "none");
                             }),
@@ -304,7 +310,7 @@ define([
                                 paddingBottom: boxEndProperties.paddingBottom,
                                 marginTop: boxEndProperties.marginTop
                             },
-                            onEnd: lang.hitch(this, function() {
+                            onEnd: lang.hitch(this, function () {
                                 this.onResizeEnd(this);
                             })
                         });
@@ -312,7 +318,7 @@ define([
                         var hShrink = dojobasefx.animateProperty({
                             node: this.boxNode,
                             duration: duration,
-                            beforeBegin: lang.hitch(this, function() {
+                            beforeBegin: lang.hitch(this, function () {
                                 domStyle.set(this.contentNode, "display", "none");
                             }),
                             properties: {
@@ -320,7 +326,7 @@ define([
                                 paddingLeft: "0",
                                 paddingRight: "0"
                             },
-                            onEnd: lang.hitch(this, function() {
+                            onEnd: lang.hitch(this, function () {
                                 var badgeSlide = dojobasefx.animateProperty({
                                     node: this.badgeNode,
                                     duration: duration,
@@ -336,7 +342,7 @@ define([
                                         paddingLeft: boxEndProperties.paddingLeft,
                                         paddingRight: boxEndProperties.paddingRight
                                     },
-                                    onEnd: lang.hitch(this, function() {
+                                    onEnd: lang.hitch(this, function () {
                                         //console.log("minimized!");
                                         this.state = "minimized";
                                     })
@@ -348,7 +354,9 @@ define([
                         fx.chain([vShrink, hShrink]).play();
                         this.state = "minimizing";
                     }
-                    catch (err) {console.error(err);}
+                    catch (err) {
+                        console.error(err);
+                    }
                 }
             },
 
@@ -366,11 +374,18 @@ define([
                 var badgeEndProperties = {
                     left: 0
                 };
+
+                // Broadcast the change in height
+                var startHeight = domStyle.get(this.boxNode, "height") + domStyle.get(this.boxNode, "paddingTop") + domStyle.get(this.boxNode, "paddingBottom") + domStyle.get(this.boxNode, "marginTop");
+                var endHeight = boxEndProperties.height + boxEndProperties.paddingTop + boxEndProperties.paddingBottom + boxEndProperties.marginTop;
+                this.onResizeStart(this.id, {dh: (endHeight) - (startHeight)});
+
                 if (duration !== 0 && !duration) {
                     duration = 350;
                 }
                 if (duration <= 0) {
                     // 不使用动画效果
+                    console.info("不使用动画效果");
                     for (var key in boxEndProperties) {
                         boxEndProperties[key] = boxEndProperties[key] + "px";
                     }
@@ -385,6 +400,12 @@ define([
                 }
                 else {
                     try {
+                        var badgeSlide = dojobasefx.animateProperty({
+                            node: this.badgeNode,
+                            duration: duration,
+                            properties: badgeEndProperties
+                        });
+
                         var hShrink = dojobasefx.animateProperty({
                             node: this.boxNode,
                             properties: {
@@ -393,12 +414,7 @@ define([
                                 paddingLeft: 0,
                                 paddingRight: 0
                             },
-                            onBegin:lang.hitch(this,function(){
-                                var badgeSlide = dojobasefx.animateProperty({
-                                    node: this.badgeNode,
-                                    duration: duration,
-                                    properties: badgeEndProperties
-                                });
+                            onBegin: lang.hitch(this, function () {
                                 fx.chain([badgeSlide]).play();
                             }),
                             onEnd: lang.hitch(this, function () {
@@ -418,10 +434,10 @@ define([
                                         domStyle.set(this.contentNode, "display", "block");
                                     }),
                                     onEnd: lang.hitch(this, function () {
-                                        console.info("垂直最大化动画onEnd");
                                         this.state = "maximized";
                                         domStyle.set(this.contentNode, "overflow", "auto");
                                         query(".widgetButton", this.domNode).style("display", "block");
+                                        console.info("最大化动画结束");
                                         this.onResizeEnd(this);
                                     }),
                                     properties: {
@@ -431,10 +447,11 @@ define([
                                         marginTop: boxEndProperties.marginTop
                                     }
                                 });
+
                                 fx.chain([hGrow, vGrow]).play();
                             })
                         });
-                        hShrink.play();
+                        fx.chain([hShrink]).play();
                         this.state = "maximizing";
                     }
                     catch (err) {
@@ -443,28 +460,28 @@ define([
                 }
             },
 
-            getBoundingBox: function() {
+            getBoundingBox: function () {
                 var computedStyledomNode = domStyle.getComputedStyle(this.domNode);
                 var computedStyleboxNode = domStyle.getComputedStyle(this.boxNode);
 
-                var domBox = domGeom.getMarginBox(this.domNode,computedStyledomNode);
-                var boxBox = domGeom.getMarginBox(this.boxNode,computedStyleboxNode);
+                var domBox = domGeom.getMarginBox(this.domNode, computedStyledomNode);
+                var boxBox = domGeom.getMarginBox(this.boxNode, computedStyleboxNode);
                 var bb = {
                     w: domBox.w, h: boxBox.h, t: domBox.t, l: domBox.l
                 };
                 return bb;
             },
 
-            onResizeStart: function(/*String*/ frameId, /*Object*/ endBounds) {
-                topic.publish("onResizeStart",frameId,endBounds);
+            onResizeStart: function (/*String*/ frameId, /*Object*/ endBounds) {
+                topic.publish("onResizeStart", frameId, endBounds);
             },
 
-            onResizeEnd: function(/*WidgetFrame*/ frame) {
-
+            onResizeEnd: function (/*WidgetFrame*/ frame) {
+                topic.publish("onResizeEnd", frame);
             },
 
-            onClose: function(/*String*/ frameId) {
-                topic.publish("onClose",this.id);
+            onClose: function (/*String*/ frameId) {
+                topic.publish("onClose", frameId);
                 return frameId;
                 // stub for event handling in WidgetContainer
             }

@@ -182,7 +182,6 @@ define(["dojo/_base/declare",
         },
 
         hideMenu: function () {
-            console.info("隐藏MenuItem");
             dojobasefx.animateProperty({
                 node: this.dropDownNode,
                 duration: 150,

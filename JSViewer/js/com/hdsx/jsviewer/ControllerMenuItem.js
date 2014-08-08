@@ -21,7 +21,6 @@ define([
         url: "",
 
         postMixInProperties: function () {
-            //console.log("ControllerMenuItem postMixInProperties");
             if (this.icon === "") {
                 this.icon = "assets/images/icons/i_icp.png";
             }
@@ -42,7 +41,7 @@ define([
         },
 
         postCreate: function () {
-            //console.log("ControllerMenuItem postCreate");
+            this.inherited(arguments);
             var iconUrl = require.toUrl("com/hdsx/jsviewer/" + this.icon);
             this.setIcon(iconUrl);
             dojo.setSelectable(this.domNode, false);
@@ -53,7 +52,6 @@ define([
         },
 
         onClick: function (evt) {
-            console.info("我被点击了");
             this.onMenuItemClick({
                 value: this.value,
                 label: this.label,
@@ -63,7 +61,6 @@ define([
 
         onMenuItemClick: function (data) {
             // stub for event propagation
-            console.info("data.value::" +data.value);
             return data;
         },
 

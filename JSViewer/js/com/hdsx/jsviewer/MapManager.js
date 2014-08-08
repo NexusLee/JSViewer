@@ -31,7 +31,7 @@ define(["dojo/_base/declare",
 
             templateString: "<div style='display: none;'></div>",
             configLoadedEventSubscribe: null,
-            i18nStrings: null,
+            i18nStrings: MapManagerStrings,
             toolNames: null,
 
             configData: null,
@@ -53,9 +53,6 @@ define(["dojo/_base/declare",
                 if (this.mapId === "") {
                     this.mapId = "map";
                 }
-
-                // Init i18n
-                this.i18nStrings = MapManagerStrings;
                 this.toolNames[Navigation.PAN] = this.i18nStrings.navPanTool;
                 this.toolNames[Navigation.ZOOM_IN] = this.i18nStrings.navZoomInTool;
                 this.toolNames[Navigation.ZOOM_OUT] = this.i18nStrings.navZoomOutTool;
@@ -139,11 +136,7 @@ define(["dojo/_base/declare",
                             this.onNavRequest(null);
                         }
                     }));
-
                     topic.publish("mapLoadedEvent", this.map);
-
-                    // Disconnect event handler after it fires once
-                    //dojo.disconnect(mapLoadHandle);
                     mapLoadHandle.remove();
                 }));
 
@@ -205,12 +198,10 @@ define(["dojo/_base/declare",
                 if (data && data.value && data.menuCode) {
                     if (data.menuCode === "basemaps.mapservice") {
                         // User has chosen a basemap
-
                         // Make it visible
                         // Make other basemaps hidden
                         array.forEach(this.map.layerIds, lang.hitch(this, function (id) {
                             var layer = this.map.getLayer(id);
-
                             // Only change vis of base maps
                             if (layer.layerCategory && layer.layerCategory === "BASE") {
                                 if (id === data.value) {

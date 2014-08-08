@@ -32,11 +32,11 @@ define([
         },
 
         startup: function () {
-            console.log("WidgetManager startup");
+//            console.log("WidgetManager startup");
         },
 
         onConfig: function (configData) {
-            console.log("WidgetManager::onConfig");
+//            console.log("WidgetManager::onConfig");
             this.configData = configData;
             this.configLoadedEventSubscribe.remove();
             // Make note of the defined widgets
@@ -50,22 +50,10 @@ define([
         onMapLoad: function (map) {
             //console.log("WidgetManager::onMapLoad");
             this.map = map;
-
-            // For testing purposes
-            //setTimeout(dojo.hitch(this, function(){
-            //	var w = this.getWidget("KML Widget");
-            //	dojo.publish("showWidget", [w]);
-            //	for (var label in this.widgetDefinitions) {
-            //		//console.log("getWidget(" + label + ")");
-            //		var w = this.getWidget(label);
-            //		dojo.publish("showWidget", [w]);
-            //	}
-            //}), 1000);
         },
 
         onMenuClick: function (data) {
             if (data && data.value && data.menuCode && data.menuCode === "widgets.widget") {
-                console.log("onMenuClick for widget '" + data.value + "'");
                 try {
                     if (this.widgetDefinitions[data.value]) {
                         var w = this.getWidget(data.value);
@@ -106,7 +94,7 @@ define([
             var index = loadStr.lastIndexOf("/");
             var length = loadStr.length;
             loadStr = loadStr.substring(index + 1, length);
-            loadStr = "var w = new " + loadStr + "(" + paramStr + ")"
+            loadStr = "var w = new " + loadStr + "(" + paramStr + ")";
            eval(loadStr);
 
             w.setTitle(defn.label);

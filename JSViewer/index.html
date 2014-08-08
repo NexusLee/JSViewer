@@ -25,7 +25,6 @@
                     "dojo/parser",
                     "dojo/ready",
                     "dojo/topic",
-                    "esri/map",
                     "com/hdsx/jsviewer/WidgetContainer",
                     "com/hdsx/jsviewer/Controller",
                     "com/hdsx/jsviewer/ConfigManager",
@@ -35,8 +34,9 @@
                     "com/hdsx/jsviewer/util",
                     "dojo/domReady!"
                 ],
-                function (parser, ready, topic, map,
-                          WidgetContainer, Controller, ConfigManager, DataManager, MapManager, WidgetManager,util) {
+                function (parser, ready, topic,WidgetContainer,
+                          Controller, ConfigManager, DataManager,
+                          MapManager, WidgetManager,util) {
                     ready(function () {
                         parser.parse();
                         esriConfig.defaults.io.proxyUrl = "proxy.php";
@@ -46,10 +46,6 @@
                         }
                     });
                 });
-        function onPageResizeHandler() {
-            // Comment out these lines, and the onresize on body
-            // if you don't want full-screen
-        }
     </script>
 </head>
 <body class="tundra">

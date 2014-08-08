@@ -15,7 +15,8 @@ define(["dojo/_base/declare",
     "dojo/NodeList-fx",
     "com/hdsx/jsviewer/WidgetFrame",
     "com/hdsx/jsviewer/_Widget",
-    "dojo/text!./templates/WidgetContainer.html"
+    "dojo/text!./templates/WidgetContainer.html",
+    "dojo/domReady!"
 ], function (declare, _WidgetBase,_TemplatedMixin,_Container,lang,
              on,topic,domGeom, domClass, query,domStyle, array, fx,dojobasefx,
              nodeListFx, WidgetFrame, _Widget, template) {
@@ -29,16 +30,16 @@ define(["dojo/_base/declare",
         },
         postCreate: function () {
             // Get references to nodes
-            console.log("WidgetContainer postCreate");
             this.showHideButton = query(".wbHide", this.domNode)[0];
             this._scrollDiv = query(".widgetContainerControls", this.domNode)[0];
             this._containerPadding = domStyle.get(this.domNode, "paddingTop");
             // showWidget event: create if necessary, maximize
+//            如果需要，创建widget并且最大化
             topic.subscribe("showWidget", lang.hitch(this,this.onShowWidget));
-
             //当地图大小改变时，调整widget位置
             topic.subscribe("mapResizedEvent", lang.hitch(this,this.onMapResize));
         },
+
         startup: function () {
             if (this._started) {
                 return;
@@ -48,7 +49,6 @@ define(["dojo/_base/declare",
             array.forEach(children, function (child) {
                 child.startup();
             });
-            console.info("在WidgetContainerstartup中subscribe   onClose");
             for (var i = 0; i < children.length; i++) {
                 topic.subscribe("onResizeStart", lang.hitch(this,this.frameResizing));
                 topic.subscribe("onClose", lang.hitch(this,this.closeWidget));
@@ -71,10 +71,13 @@ define(["dojo/_base/declare",
             }
             this.inherited(arguments);
         },
+
         onMapResize: function (/*Object*/ mapBox) {
+            console.info("onMapResize::");
             // Just simple, scroll the top widget into view
             var children = this.getChildren();
             if (children[0]) {
+                console.info("children[0]为true");
                 this.ensureFrameIsVisible(children[0]);
             }
         },
@@ -116,6 +119,7 @@ define(["dojo/_base/declare",
                 }
 
                 if (domClass.contains(this.showHideButton, "wbShow")) {
+                    console.info("domClass.contains(this.showHideButton, 'wbShow')");
                     this.onClickShow();
                 }
             }
@@ -196,15 +200,16 @@ define(["dojo/_base/declare",
         ensureFrameIsVisible: function (/*WidgetFrame*/ target) {
             var computedStyle = domStyle.getComputedStyle(this.domNode);
             var containerBox = domGeom.getContentBox(this.domNode, computedStyle);
-            //var containerBox = dojo.contentBox(this.domNode);
             var frameBox = target.getBoundingBox();
 
             // Off the top?
+            console.info("frameBox.t::" +frameBox.t  +"  this._containerPadding:: " + this._containerPadding);
             if (frameBox.t < this._containerPadding) {
                 var downShiftDistance = this._containerPadding - frameBox.t; //pixels
 
                 // Move all of the frames downShiftDistance
                 var nodes = query(".widgetFrame", this.domNode);
+                console.info("downShiftDistance::" + downShiftDistance);
                 this.moveFrames(nodes, downShiftDistance);
             }
             // Off the bottom?
@@ -213,12 +218,14 @@ define(["dojo/_base/declare",
 
                 // Move all of the frames upShiftDistance
                 var nodes = query(".widgetFrame", this.domNode);
+                console.info("upShiftDistance * -1::" + upShiftDistance * -1);
                 this.moveFrames(nodes, upShiftDistance * -1);
+            }else{
+                console.info("不满足上面两种情况");
             }
         },
 
         positionFrameAfterFrame: function (/*WidgetFrame*/ frameToPlace, /*WidgetFrame*/ afterFrame) {
-            console.info("多个widget的时候，修改widget的位置");
             var bBox = afterFrame.getBoundingBox();
             var y = bBox.t + bBox.h + 20;
             domStyle.set(frameToPlace.domNode, "top", y + "px");
@@ -227,6 +234,7 @@ define(["dojo/_base/declare",
         moveFrames: function (/*NodeList*/ frameDomNodes, /*Number*/ distance) {
             if (frameDomNodes && frameDomNodes.length > 0 && distance !== 0) {
                 var animations = [];
+                console.info("moveFrames::distance::" + distance);
                 frameDomNodes.forEach(function (n) {
                     var t = domStyle.get(n, "top");
                     var a = dojobasefx.animateProperty({
@@ -237,42 +245,14 @@ define(["dojo/_base/declare",
                     });
                     animations.push(a);
                 });
-
                 fx.combine(animations).play();
             }
         },
 
-        minimize: function () {
-            console.info("WidgetContainer::minimize方法");
-            var slideDistance = parseInt(domStyle.get(this.domNode, "right"));
-            var allFrames = query(".widgetFrame", this.domNode);
-
-            allFrames.fadeOut().play();
-            allFrames.animateProperty({
-                properties: {
-                    left: slideDistance
-                }
-            }).play();
-        },
-
-        maximize: function () {
-            console.info("WidgetContainer::minimize方法");
-            var allFrames = query(".widgetFrame", this.domNode);
-
-            allFrames.fadeIn().play();
-            allFrames.animateProperty({
-                properties: {
-                    left: 0
-                }
-            }).play();
-        },
-
         frameResizing: function (/*String*/ frameId, /*Object*/ deltas) {
             // One of the frames is resizing. Make room, or snug up
-            console.info("frameResizing");
             try {
                 var children = this.getChildren();
-
                 var target = null;
                 var nodesAfter = query.NodeList();
                 var shiftDistance = 0;
@@ -306,7 +286,6 @@ define(["dojo/_base/declare",
         },
 
         closeWidget: function (/*String*/ frameId) {
-            console.info("通过topic.publish调用widget的关闭事件");
             try {
                 var computedStyle = domStyle.getComputedStyle(this.domNode);
                 var containerBox = domGeom.getContentBox(this.domNode, computedStyle);
@@ -389,6 +368,28 @@ define(["dojo/_base/declare",
             catch (err) {
                 console.error(err);
             }
+        },
+
+        minimize: function () {
+            var slideDistance = parseInt(domStyle.get(this.domNode, "right"));
+            var allFrames = query(".widgetFrame", this.domNode);
+
+            allFrames.fadeOut().play();
+            allFrames.animateProperty({
+                properties: {
+                    left: slideDistance
+                }
+            }).play();
+        },
+
+        maximize: function () {
+            var allFrames = query(".widgetFrame", this.domNode);
+            allFrames.fadeIn().play();
+            allFrames.animateProperty({
+                properties: {
+                    left: 0
+                }
+            }).play();
         }
     });
 });

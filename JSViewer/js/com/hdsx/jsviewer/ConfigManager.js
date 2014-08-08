@@ -59,8 +59,8 @@ define([
                     links: [],
                     proxyType: ""
                 };
-                // User interface elements
-                console.log("configData.ui loading...");
+//                User interface elements
+//                console.log("configData.ui loading...");
                 this.configData.ui.title = util.xml.getValue("userinterface > title", response);
                 this.configData.ui.subtitle =util.xml.getValue("userinterface > subtitle", response);
                 this.configData.ui.logo = util.xml.getValue("userinterface > logo", response);
@@ -101,8 +101,8 @@ define([
                     this.configData.map.baseMaps.push(map);
                 }));
 
-                // Live Maps
-                console.log("configData.maps.liveMaps loading...");
+//                Live Maps
+//                console.log("configData.maps.liveMaps loading...");
                 var liveMapsNode = util.xml.getNodes("map", "livemaps", response)[0];
                 var menuId = util.xml.getAttribute(liveMapsNode, "menu");
                 var liveMapNodes = util.xml.getNodes("livemaps", "mapservice", response);// dojo.query("livemaps > mapservice", response);
@@ -122,7 +122,7 @@ define([
                 }));
 
                 // Extents
-                console.log("configData.map extents loading...");
+//                console.log("configData.map extents loading...");
                 var mapNode = util.xml.getNodes("configuration", "map", response)[0];
 
                 var boxToCoords = function (str, idx, arr) {
@@ -154,7 +154,7 @@ define([
                 }));
 
                 // Widgets
-                console.log("configData.widgets loading...");
+//                console.log("configData.widgets loading...");
                 var widgetNodes = util.xml.getNodes("widgets", "widget", response);// dojo.query("widgets > widget", response);
                 var menuCode = "widgets.widget";
                 widgetNodes.forEach(lang.hitch(this, function (node, idx, arr) {
@@ -185,7 +185,7 @@ define([
                 }));
 
                 // Proxy type
-                console.log("configData.proxyType loading...");
+//                console.log("configData.proxyType loading...");
                 var proxyNode = util.xml.getNodes("configuration", "proxytype", response)[0];
                 this.configData.proxyType = util.xml.getValue(proxyNode);
                 // Publish configuration object

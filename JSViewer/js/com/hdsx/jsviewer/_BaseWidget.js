@@ -28,7 +28,6 @@ define([
             configDataType: "",
 
             postMixInProperties: function () {
-                console.log("_BaseWidget postMixInProperties " + this.title);
                 if (this.icon === "") {
                     this.icon = "assets/images/icons/i_pushpin.png";
                 }
@@ -39,7 +38,6 @@ define([
             },
 
             postCreate: function () {
-                console.log("_BaseWidget postCreate " + this.title);
                 // Wire up the map
                 try {
 //                    var tt = registry.byId(this.mapId);
@@ -117,7 +115,7 @@ define([
             setConfig: function (/* String */ config) {
                 this.inherited(arguments);
                 this.configUrl = require.toUrl("com/hdsx/jsviewer/" + config);
-                console.info("_BaseWidget::" + this.configUrl);
+                //console.info("_BaseWidget::" + this.configUrl);
                 if (this.config) {
                     if (this.config.match("\.json$")) {
                         // Ends with .json -> parse JSON
