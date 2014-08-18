@@ -1,108 +1,109 @@
 define([
-    "dojo/_base/declare",
-    "dojo/_base/array",
-    "dojo/_base/lang",
-    "dojo/on",
-    "dojo/topic",
-    "dijit/_WidgetBase",
-    "dijit/_TemplatedMixin",
-    "com/hdsx/jsviewer/widgets/AboutWidget",
-    "com/hdsx/jsviewer/widgets/OverviewWidget",
-    "dojo/domReady!"],
+        "dojo/_base/declare",
+        "dojo/_base/array",
+        "dojo/_base/lang",
+        "dojo/on",
+        "dojo/topic",
+        "dijit/_WidgetBase",
+        "dijit/_TemplatedMixin",
+        "com/hdsx/jsviewer/widgets/AboutWidget",
+        "com/hdsx/jsviewer/widgets/OverviewWidget",
+        "dojo/domReady!"],
     function (declare, array, lang, on, topic, _WidgetBase, _TemplatedMixin,AboutWidget,OverviewWidget) {
-    return declare([_WidgetBase, _TemplatedMixin], {
-        constructor: function () {
-            this.widgetDefinitions = {};
-            this.widgets = {};
-        },
+        return declare([_WidgetBase, _TemplatedMixin], {
+            constructor: function () {
+                this.widgetDefinitions = {};
+                this.widgets = {};
+            },
 
-        templateString: "<div style='display: none;'></div>",
-        map: null,
-        configData: null,
-        configLoadedEventSubscribe: null,
-        postMixInProperties: function () {
-            console.log("WidgetManager postMixInProperties");
-        },
+            templateString: "<div style='display: none;'></div>",
+            map: null,
+            configData: null,
+            configLoadedEventSubscribe: null,
+            postMixInProperties: function () {
+//                console.log("WidgetManager postMixInProperties");
+            },
 
-        postCreate: function () {
-            console.log("WidgetManager postCreate");
-            this.configLoadedEventSubscribe = topic.subscribe("config/configLoadedEvent", lang.hitch(this, this.onConfig));
-            topic.subscribe("mapLoadedEvent", lang.hitch(this, this.onMapLoad));
-            topic.subscribe("menuItemClickedEvent", lang.hitch(this, this.onMenuClick));
-        },
+            postCreate: function () {
+//                console.log("WidgetManager postCreate");
+                this.configLoadedEventSubscribe = topic.subscribe("config/configLoadedEvent", lang.hitch(this, this.onConfig));
+                topic.subscribe("mapLoadedEvent", lang.hitch(this, this.onMapLoad));
+                topic.subscribe("menuItemClickedEvent", lang.hitch(this, this.onMenuClick));
+            },
 
-        startup: function () {
+            startup: function () {
 //            console.log("WidgetManager startup");
-        },
+            },
 
-        onConfig: function (configData) {
+            onConfig: function (configData) {
 //            console.log("WidgetManager::onConfig");
-            this.configData = configData;
-            this.configLoadedEventSubscribe.remove();
-            // Make note of the defined widgets
-            // and dojo.require them
-            array.forEach(configData.widgets, lang.hitch(this, function (defn) {
-                this.widgetDefinitions[defn.label] = defn;
-                this.requireWidget(defn.label);
-            }));
-        },
+                this.configData = configData;
+                this.configLoadedEventSubscribe.remove();
+                // Make note of the defined widgets
+                // and dojo.require them
+                array.forEach(configData.widgets, lang.hitch(this, function (defn) {
+                    this.widgetDefinitions[defn.label] = defn;
+                    this.requireWidget(defn.label);
+                }));
+            },
 
-        onMapLoad: function (map) {
-            //console.log("WidgetManager::onMapLoad");
-            this.map = map;
-        },
+            onMapLoad: function (map) {
+                //console.log("WidgetManager::onMapLoad");
+                this.map = map;
+            },
 
-        onMenuClick: function (data) {
-            if (data && data.value && data.menuCode && data.menuCode === "widgets.widget") {
-                try {
-                    if (this.widgetDefinitions[data.value]) {
-                        var w = this.getWidget(data.value);
-                        topic.publish("showWidget", w);
+            onMenuClick: function (data) {
+                if (data && data.value && data.menuCode && data.menuCode === "widgets.widget") {
+                    try {
+                        if (this.widgetDefinitions[data.value]) {
+                            var w = this.getWidget(data.value);
+                            topic.publish("showWidget", w);
+                        }
+                    }
+                    catch (err) {
+                        console.error(err);
                     }
                 }
-                catch (err) {
-                    console.error(err);
+            },
+
+            getWidget: function (label) {
+                try {
+                    if (!this.widgets[label]) {
+                        this.loadWidget(label);
+                    }
+                    return this.widgets[label];
+                } catch (err) {
+//                    console.error(err);
                 }
-            }
-        },
+            },
 
-        getWidget: function (label) {
-            try{
-                if (!this.widgets[label]) {
-                    this.loadWidget(label);
+            requireWidget: function (label) {
+                var defn = this.widgetDefinitions[label];
+                var reqStr = "re" + "quire(['" + defn.widgetType + "'])"; // breaking up dojo. and require necessary to fool the dojo parser!
+                console.warn("reqStr::" + reqStr);
+//                eval(reqStr);
+            },
+
+            loadWidget: function (label) {
+                var defn = this.widgetDefinitions[label];
+                var paramStr = "";
+                if (defn.config) {
+                    paramStr = "{ config: '" + defn.config + "'}";
                 }
-                return this.widgets[label];
-            }catch(err){
-                console.error(err);
+
+                var loadStr = defn.widgetType;
+                var index = loadStr.lastIndexOf("/");
+                var length = loadStr.length;
+                loadStr = loadStr.substring(index + 1, length);
+                loadStr = "var w = new " + loadStr + "(" + paramStr + ")";
+                eval(loadStr);
+
+                w.setTitle(defn.label);
+                w.setIcon(defn.icon);
+                w.setConfig(defn.config);
+                w.setMap(this.map);
+
+                this.widgets[label] = w;
             }
-        },
-
-        requireWidget: function (label) {
-//            var defn = this.widgetDefinitions[label];
-//            var reqStr = "re" + "quire(['" + defn.widgetType + "'])"; // breaking up dojo. and require necessary to fool the dojo parser!
-//            console.warn("reqStr::" + reqStr);
-        },
-
-        loadWidget: function (label) {
-            var defn = this.widgetDefinitions[label];
-            var paramStr = "";
-            if (defn.config) {
-                paramStr = "{ config: '" + defn.config + "'}";
-            }
-
-            var loadStr = defn.widgetType;
-            var index = loadStr.lastIndexOf("/");
-            var length = loadStr.length;
-            loadStr = loadStr.substring(index + 1, length);
-            loadStr = "var w = new " + loadStr + "(" + paramStr + ")";
-           eval(loadStr);
-
-            w.setTitle(defn.label);
-            w.setIcon(defn.icon);
-            w.setConfig(defn.config);
-            w.setMap(this.map);
-
-            this.widgets[label] = w;
-        }
+        });
     });
-});

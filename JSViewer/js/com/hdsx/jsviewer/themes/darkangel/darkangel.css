@@ -27,10 +27,8 @@
     /*background-color: #111;
 	opacity: 0.85;
 	filter:alpha(opacity=85);*/
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    /*上右下左*/
+    padding: 5px 10px 5px 10px;
     -o-border-radius: 5px;
     -moz-border-radius: 6px;
     -webkit-border-radius: 5px;
@@ -240,8 +238,9 @@ img.loader {
 .resultItem {
 	color: white;
     background-color: #333;
+    background-repeat: no-repeat;
+    background-position: left center;
     margin: 2px 2px 2px 0px;
-    padding: 4px;
     border: 0;
     font-size: 8pt;
     font-weight: normal;
@@ -249,9 +248,8 @@ img.loader {
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
     border-radius: 3px;
+    padding: 4px;
 	padding-left: 32px;
-	background-repeat: no-repeat;
-	background-position: left center;
 	cursor: pointer;
 }
 

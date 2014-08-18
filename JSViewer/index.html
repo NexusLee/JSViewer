@@ -15,7 +15,7 @@
                     location: path_location + "/js/com"
                 }
             ],
-            location:"zh-cn"
+            location: "zh-cn"
         };
     </script>
     <script type="text/javascript" src="http://localhost/arcgis_js_api3.9/init.js">
@@ -34,15 +34,17 @@
                     "com/hdsx/jsviewer/util",
                     "dojo/domReady!"
                 ],
-                function (parser, ready, topic,WidgetContainer,
-                          Controller, ConfigManager, DataManager,
-                          MapManager, WidgetManager,util) {
+                function (parser, ready, topic, WidgetContainer, Controller, ConfigManager, DataManager, MapManager, WidgetManager, util) {
                     ready(function () {
                         parser.parse();
                         esriConfig.defaults.io.proxyUrl = "proxy.php";
                         if (util) {
                             var screen = util.pageBox();
-                            topic.publish("mapResizeRequestEvent", screen)
+                            topic.publish("mapResizeRequestEvent", screen);
+                            window.onresize = function () {
+                                var screen = util.pageBox();
+                                topic.publish("mapResizeRequestEvent", screen);
+                            }
                         }
                     });
                 });

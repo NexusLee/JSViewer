@@ -103,26 +103,7 @@ define([
                     var menuConfig = this.configData.ui.menus[i];
                     menuConfig.positionAsPct = (i + 1) * stepPct;
                     var menu = new ControllerMenu(menuConfig);
-                   // aspect.after(menu, "onMenuItemClick", lang.hitch(this,this.onMenuItemClick),true);
-
-                    aspect.after(menu, "onMenuItemClick",function(data){
-                        if (data && data.menuCode && data.menuCode === "links.link") {
-                            // Controller handles link events
-                            for (var idx in this.configData.links) {
-                                if (this.configData.links[idx].label === data.value) {
-                                    var linkInfo = this.configData.links[idx];
-                                    var wId = linkInfo.label.replace(/\W/g, "");
-                                    window.open(linkInfo.url, wId);
-                                    break;
-                                }
-                            }
-                        }
-                        else {
-                            topic.publish("menuItemClickedEvent", data);
-                        }
-                    },true);
-
-
+                    aspect.after(menu, "onMenuItemClick",lang.hitch(this,this.onMenuItemClick),true);
                     // 添加菜单项
                     array.forEach(this.menuItemData[menuConfig.id], lang.hitch(this, function (item) {
                         menu.addMenuItem(item);
@@ -145,7 +126,7 @@ define([
             var itemSources = [
                 this.configData.map.baseMaps,
                 this.configData.map.liveMaps,
-                this.configData.map.extents,
+//                this.configData.map.extents,
                 this.configData.navTools,
                 this.configData.widgets,
                 this.configData.links

@@ -80,7 +80,6 @@ define([
                 if (this._started) {
                     return;
                 }
-                //console.log("WF::startup");
                 // Pass to children
                 var children = this.getChildren();
                 array.forEach(children, function (child) {

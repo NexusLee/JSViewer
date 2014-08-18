@@ -73,7 +73,6 @@ define(["dojo/_base/declare",
         },
 
         onMapResize: function (/*Object*/ mapBox) {
-            console.info("onMapResize::");
             // Just simple, scroll the top widget into view
             var children = this.getChildren();
             if (children[0]) {

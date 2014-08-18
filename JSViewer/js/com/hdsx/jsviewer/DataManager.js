@@ -17,11 +17,11 @@ define([
         proxyUrlProc: null,
 
         postMixInProperties: function() {
-            console.log("DataManager postMixInProperties");
+//            console.log("DataManager postMixInProperties");
         },
 
         postCreate: function() {
-            console.log("DataManager postCreate");
+//            console.log("DataManager postCreate");
             this.configLoadedEventSubscribe = topic.subscribe("config/configLoadedEvent", lang.hitch(this,this.onConfig));
             topic.subscribe("dataRequestEvent", lang.hitch(this.onDataRequest));
             topic.subscribe("widgetLocationsChangedEvent", lang.hitch(this.onWidgetLocationsChanged));
@@ -29,7 +29,7 @@ define([
         },
 
         startup: function() {
-            console.log("DataManager startup");
+//            console.log("DataManager startup");
         },
 
         setProxyType: function(/*String*/ value) {

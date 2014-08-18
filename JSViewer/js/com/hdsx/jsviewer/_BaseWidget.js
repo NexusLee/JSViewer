@@ -107,7 +107,6 @@ define([
                 console.log("_BaseWidget uninitialize");
                 array.forEach(this.connects, function (handle) {
                     handle.remove();
-                    //dojo.disconnect(handle);
                 });
                 this.connects = [];
             },
@@ -118,15 +117,12 @@ define([
                 //console.info("_BaseWidget::" + this.configUrl);
                 if (this.config) {
                     if (this.config.match("\.json$")) {
-                        // Ends with .json -> parse JSON
                         this.configDataType = "json";
                     }
                     else if (this.config.match("\.xml$")) {
-                        // Ends with .xml -> parse XML
                         this.configDataType = "xml";
                     }
                     else {
-                        // Load plain text
                         this.configDataType = "text";
                     }
 
@@ -146,7 +142,6 @@ define([
             getAllNamedChildDijits: function () {
                 // Gather all child widgets
                 var w = query("[widgetId]", this.containerNode || this.domNode);
-                //console.dir(w);
                 var children = w.map(registry.byNode);
 
                 this.widgets = {};

@@ -180,10 +180,10 @@ define([
         },
 
         applyAlternateBackground: function(/*boolean*/ isAlt) {
-            if (isAlt && dojo.hasClass(this.domNode, "alt") === false) {
+            if (isAlt && domClass.contains(this.domNode, "alt") === false) {
                 domClass.add(this.domNode, "alt");
             }
-            else if (!isAlt && dojo.hasClass(this.domNode, "alt")) {
+            else if (!isAlt && domClass.contains(this.domNode, "alt")) {
                 domClass.remove(this.domNode, "alt");
             }
         },
@@ -205,7 +205,7 @@ define([
 
         onMouseMove: function(evt) {
             this._clearHoverTimeout();
-            this._hoverTimeout = setTimeout(dojo.hitch(this, function(evt) {
+            this._hoverTimeout = setTimeout(lang.hitch(this, function(evt) {
                 this.onHover({});
             }), 300);
         },

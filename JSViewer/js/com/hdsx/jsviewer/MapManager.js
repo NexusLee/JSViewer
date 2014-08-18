@@ -59,7 +59,6 @@ define(["dojo/_base/declare",
             },
 
             postCreate: function () {
-                //console.log("MapManager postCreate");
                 this.configLoadedEventSubscribe = topic.subscribe("config/configLoadedEvent",lang.hitch(this,this.onConfig));
                 topic.subscribe("menuItemClickedEvent", lang.hitch(this, this.onMenuClick));
                 topic.subscribe("widgetHighlightEvent", lang.hitch(this, this.onWidgetHighlight));
@@ -69,7 +68,6 @@ define(["dojo/_base/declare",
             },
 
             startup: function () {
-                //console.log("MapManager startup");
                 if (this.highlight === null) {
                     var theDiv = document.createElement("div");
                     var mapDiv = dom.byId(this.map.id);
@@ -79,9 +77,8 @@ define(["dojo/_base/declare",
             },
 
             onConfig: function (configData) {
-                //console.log("MapManager::onConfig");
                 this.configData = configData;
-                // Unsubscribe from the event
+//                移除事件订阅
                 this.configLoadedEventSubscribe.remove();
                 var params = {
                     slider: false,
@@ -91,38 +88,26 @@ define(["dojo/_base/declare",
                     logo: false
                 };
 
-                // Initial extent defined?
+//                根据定义初始化地图范围
                 if (configData.map.initialExtent) {
                     var ext = configData.map.initialExtent;
-//                    params.extent = new Extent(ext[0], ext[1], ext[2], ext[3], null);
+                    params.extent = new Extent(ext[0], ext[1], ext[2], ext[3], null);
                 }
 
                 this.map = new Map(this.mapId, params);
 
                 var mapLoadHandle = on(this.map, "load", lang.hitch(this, function (map) {
-                    // Ensure that the extent is what we asked for
-                    setTimeout(lang.hitch(this, function () {
-                        if (this.map.extent !== params.extent) {
-//                            this.map.setExtent(params.extent);
-                        }
-                    }), 1000);
-
-//                    // Move the zoom slider down
-//                    if (!this.map._slider) {
-//                        console.error("Possible JS API change, private member _slider not available");
-//                    }
-//                    else {
-////                        domStyle.set(this.map._slider.domNode, {
-////                            top: "100px",
-////                            left: "25px"
-////                        });
-//                    }
-
-                    // Init toolbars
+                    if(params.extent){
+                        setTimeout(lang.hitch(this, function () {
+                            if (this.map.extent !== params.extent) {
+                                this.map.setExtent(params.extent);
+                            }
+                        }), 1000);
+                    }
+//                  初始化工具
                     this.navToolbar = new Navigation(this.map);
                     this.drawToolbar = new Draw(this.map);
 
-                    // Connect layer change events
                     on(this.map, "layer-add", function (layer) {
                         topic.publish("layerAddedEvent", layer);
                     });
@@ -405,16 +390,19 @@ define(["dojo/_base/declare",
             },
 
             onResizeRequest: function (/*Object*/ box) {
-                var mapDiv = dom.byId(this.map.id);
-                domStyle.set(mapDiv, {
-                    position: "absolute",
-                    left: box.l + "px",
-                    top: box.t + "px",
-                    width: box.w + "px",
-                    height: box.h + "px"
-                });
-                this.map.resize();
-                topic.publish("mapResizedEvent", box);
+                if(this.map){
+                    var mapDiv = dom.byId(this.map.id);
+                    domStyle.set(mapDiv, {
+                        position: "absolute",
+                        left: box.l + "px",
+                        top: box.t + "px",
+                        width: box.w + "px",
+                        height: box.h + "px"
+                    });
+                    this.map.resize();
+                    topic.publish("mapResizedEvent", box);
+                }
+
             }
         })
     });

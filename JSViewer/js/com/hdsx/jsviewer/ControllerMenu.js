@@ -13,10 +13,12 @@ define(["dojo/_base/declare",
     "dojo/_base/fx",
     "com/hdsx/jsviewer/ControllerMenuItem",
     "dojo/text!./templates/ControllerMenu.html"
-], function (declare, array, lang, _WidgetBase, _TemplatedMixin, _Container, _Contained, query, domGeom, domStyle, fx, aspect, dojobasefx, ControllerMenuItem, template) {
+], function (declare, array, lang, _WidgetBase, _TemplatedMixin,
+             _Container, _Contained, query, domGeom, domStyle,
+             fx, aspect, dojobasefx, ControllerMenuItem, template) {
     return declare([_WidgetBase, _TemplatedMixin, _Container, _Contained], {
         constructor: function (/*Object*/ params) {
-
+            lang.mixin(this, params);
         },
         templateString: template,
         positionAsPct: 0,
@@ -44,13 +46,13 @@ define(["dojo/_base/declare",
         },
 
         postCreate: function () {
-            //console.log("ControllerMenu postCreate");
+//            console.log("ControllerMenu postCreate");
             this.setIcon(require.toUrl("com/hdsx/jsviewer/" + this.icon));
             this.setLabel(this.label);
         },
 
         startup: function () {
-            //console.log("ControllerMenu startup");
+//            console.log("ControllerMenu startup");
             this.layout();
 
             // Pass to children
@@ -63,11 +65,6 @@ define(["dojo/_base/declare",
         addMenuItem: function (/*Object*/ params) {
             var menuItem = new ControllerMenuItem(params);
             aspect.after(menuItem, "onMenuItemClick", lang.hitch(this,this.onMenuItemClick));
-//            aspect.after(menuItem, "onMenuItemClick", function (data) {
-////                var hideMenu = lang.hitch(this,this.hideMenu);
-////                hideMenu();
-//                this.hideMenu();
-//            });
             this.addChild(menuItem);
         },
 
@@ -114,7 +111,11 @@ define(["dojo/_base/declare",
 
             // Remove the border-bottom from the last menu item
             var itemList = query(".menuItem", this.domNode);
-            domStyle.set(itemList[itemList.length - 1], "borderBottom", 0);
+            var lent = itemList.length;
+            if(lent>0){
+                domStyle.set(itemList[itemList.length - 1], "borderBottom", 0);
+            }
+
 
             // Shrink, show menu
             domStyle.set(this.dropDownNode, "height", 0 + "px");
